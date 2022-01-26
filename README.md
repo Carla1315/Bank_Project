@@ -1,5 +1,5 @@
 # Bank_Project
-_Implementacion de Projecto de Diagrama UML del Proyecto Banco en JavaScript_
+_Implementacion del Diagrama UML del Proyecto Banco en JavaScript_
 
 ## Comenzando 🚀
 
