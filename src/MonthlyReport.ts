@@ -1,11 +1,21 @@
 import { IReport } from "./IReport";
 export class MonthlyReportGral implements IReport{
-    ShowReport(datos:any): Object {
+    operaciones:Object;
+
+    constructor( 
+        readonly datosGenerales: Object,
+        readonly datosOperaciones: any
+    ){
+        this.operaciones= [];
+    }
+    ShowReport(): Object {
         var final_balance;
-        datos.commision!=undefined ?
-            final_balance=datos.balance + (datos.totalMoney * datos.interes / 100) - datos.commission:
-            final_balance=datos.balance + (datos.totalMoney * datos.interes / 100);
-        return  [{'Account':{'accountNumber':datos.identificador}, 
-                'operaciones':{'final_balance':final_balance}}];
+        var commision = this.datosOperaciones.commision != undefined ? this.datosOperaciones.commision : 0;
+        final_balance = this.datosOperaciones.balance + 
+                        (this.datosOperaciones.totalMoney * this.datosOperaciones.interes / 100) - commision;
+        this.operaciones= {'final_balance': final_balance}
+        return  [{'Important Dates':this.datosGenerales,
+                'Review': this.datosOperaciones,
+                'Operaciones': this.operaciones}];
     }
 }

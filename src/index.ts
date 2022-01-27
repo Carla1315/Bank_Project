@@ -5,18 +5,14 @@ import { Housing_Account } from "./Housing_Account";
 import { Investment_Fund } from "./Investment_Fund";
 
 //Clientes
-const cliente = new Customer('1','Saly','Ramos','Av. Maestro N°544','62-45565','79453285');
-const cliente2 = new Customer('2','Ruth','Ramirez','Calle Oruro N°45','62-85469','74521368');
+const cliente = new Customer('1', 'Saly', 'Ramos', 'Av. Maestro N°544', '62-45565', '79453285');
+const cliente2 = new Customer('2', 'Ruth', 'Ramirez', 'Calle Oruro N°45', '62-85469', '74521368');
 //Cuentas
-const cuentaCliente = new Current_Count('0001',100,cliente);
-const cuentaCliente2 = new Investment_Fund('0002',50,cliente);
-const cuentaCliente3 = new Current_Count('0003',200,cliente2);
-const cuentaCliente4 = new Housing_Account('0004',20,cliente2);
-const cuentaSinCliente = new Current_Count('0005',100,null);
-cliente.addAccounts(cuentaCliente);
-cliente.addAccounts(cuentaCliente2);
-cliente2.addAccounts(cuentaCliente3);
-cliente2.addAccounts(cuentaCliente4);
+const cuentaCliente = new Current_Count('0001', 100, cliente);
+const cuentaCliente2 = new Investment_Fund('0002', 50, cliente);
+const cuentaCliente3 = new Current_Count('0003', 200, cliente2);
+const cuentaCliente4 = new Housing_Account('0004', 20, cliente2);
+const cuentaSinCliente = new Current_Count('0005', 100, null);
 //Banco
 let banco=new Bank();
 banco.addAccounts(cuentaCliente);
@@ -42,7 +38,7 @@ banco.getCustomers.forEach(element => {
 });
 //Check Account Data
 console.log('- Check Account Data');
-let datosCuentaCliente=cuentaCliente.checkAccountData();
+let datosCuentaCliente = cuentaCliente.checkAccountData();
 console.log(JSON.stringify(datosCuentaCliente))
 //Enter Money
 console.log('- Enter Money');
@@ -72,22 +68,22 @@ console.log(
     + ' Numero de Cuenta: ' + cuentaCliente3.getIdentificador)
 //Monthly Report
 console.log('- Monthly Report');
-const ReporteMensual=cuentaCliente.reports();
-console.log('balance:'+cuentaCliente.getTotalMoney+' interes:'+cuentaCliente.getInteres+' commision:'+cuentaCliente.getCommission)
+const ReporteMensual = cuentaCliente.reports();
+console.log('balance:'+ cuentaCliente.getTotalMoney+' interes:'+cuentaCliente.getInteres+' commision:'+cuentaCliente.getCommission)
 console.log('Reporte Mensual: ' + JSON.stringify(ReporteMensual))
-const ReporteMensual2=cuentaCliente4.reports();
-console.log('Cuenta HA balance:'+cuentaCliente4.getTotalMoney+' interes:'+cuentaCliente4.getInteres)
+const ReporteMensual2 = cuentaCliente4.reports();
+console.log('Cuenta HA balance:'+ cuentaCliente4.getTotalMoney+' interes:'+ cuentaCliente4.getInteres)
 console.log('Reporte Mensual: ' + JSON.stringify(ReporteMensual2))
 //Modificar comision
 console.log('- Modificar comision:')
-console.log('commision:'+cuentaCliente4.getCommission)
+console.log('commision:'+ cuentaCliente4.getCommission)
 cuentaCliente4.setCommission=2,2;
-console.log('commision:'+cuentaCliente4.getCommission)
+console.log('commision:'+ cuentaCliente4.getCommission)
 //Interest value
 console.log('- Interest value:')
-console.log('CC:'+cuentaCliente.getInteres)
-console.log('IF:'+cuentaCliente2.getInteres)
-console.log('HA:'+cuentaCliente4.getInteres)
+console.log('CC:'+ cuentaCliente.getInteres)
+console.log('IF:'+ cuentaCliente2.getInteres)
+console.log('HA:'+ cuentaCliente4.getInteres)
 //You cannot get more money from CC than there is
 console.log('- CC')
 console.log('You cannot get more money from CC than there is: -250')

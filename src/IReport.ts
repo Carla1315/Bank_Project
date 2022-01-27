@@ -1,3 +1,6 @@
 export interface IReport {
-    ShowReport(datos:Object):Object;
+    datosGenerales: Object;
+    datosOperaciones: any;
+    operaciones: Object;
+    ShowReport(): Object;
 }
