@@ -88,7 +88,7 @@ export abstract class Account {
 
     enterMoney(money: number): number{
         this.totalMoney += money;
-        this.pointAccounts += Math.floor(money/10);
+        this.pointAccounts += Math.floor(money / 10);
         return this.totalMoney;
     }
 
@@ -100,5 +100,5 @@ export abstract class Account {
         this.customer=customer;
     }
     
-    abstract reports():(any)[];
+    abstract reports(): (any)[];
 }
