@@ -1,4 +1,4 @@
 export interface IWithdrawMoney {
-    limitWithdrawMoney: number;
-    withdrawMoney(money: number): boolean;
+    limitWithdrawMoney:number;
+    withdrawMoney(money:number):boolean;
 }

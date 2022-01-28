@@ -5,41 +5,36 @@ import { MonthlyReportGral } from "./MonthlyReport";
 export class Investment_Fund extends Account implements IWithdrawMoney{
     interes;
     limitWithdrawMoney: number;
-
     constructor(id: string, totalMoney: number, customer: Customer|null){
         super (id, totalMoney, customer),
         this.interes = 0.33;
-        this.limitWithdrawMoney = -600;
+        this.limitWithdrawMoney=-600;
     } 
 
     get getInteres(): number{
         return this.interes;
     }
 
-    withdrawMoney(amount: number): boolean{
-        const newTotalMoney = this.getTotalMoney - amount;
-
-        if(newTotalMoney >= this.limitWithdrawMoney){
-            this.setTotalMoney = newTotalMoney;
+    withdrawMoney(money: number): boolean{
+        if(this.getTotalMoney-money>=this.limitWithdrawMoney){
+            this.setTotalMoney=this.getTotalMoney-money;
             return true;
+        }else{
+            this.setBlock=true;
+            return false;
         }
-        this.setBlock = true;
-        return false;
     }
     
     reports(): any {
-        let importantDates = {
-            'name': this.getCustomer?.getName + ' ' + this.getCustomer?.getLastName,
-            'numberIdentification': this.getCustomer?.getId,
-            'numberAccount': this.getIdentificador,
-        }
-        let dates = {
+        let datos = new Object();
+        datos = {
+            'identificador': this.getIdentificador,
             'balance': this.getBalance,
             'totalMoney': this.getTotalMoney,
             'interes': this.getInteres,
-            'comission': this.getCommission
+            'comission': undefined
         }
-        const monthlyReport = new MonthlyReportGral(importantDates,dates)
-        return monthlyReport.ShowReport();
+        const monthlyReport = new MonthlyReportGral()
+        return monthlyReport.ShowReport(datos);
     }
 }

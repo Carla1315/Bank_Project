@@ -1,3 +1,4 @@
+import { Account } from "./Account";
 export class Customer {
     private id: string;
     private name: string;
@@ -5,21 +6,16 @@ export class Customer {
     private cellPhone: string;
     private phone: string; 
     private address: string;
+    private accounts: Array<Account>;
 
-    constructor(
-        id: string, 
-        name: string, 
-        lastName: string, 
-        address: string, 
-        phone: string, 
-        cellPhone: string
-    ){
+    constructor(id: string, name: string, lastName: string, address: string, phone: string, cellPhone: string){
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.cellPhone = cellPhone;
         this.phone = phone;
         this.address = address;
+        this.accounts = [];
     }
     
     public set setId(id :string) {
@@ -54,11 +50,11 @@ export class Customer {
         return this.cellPhone
     }
     
-    public set setAddress(address: string) {
+    public set setaddress(address: string) {
         this.address = address;
     }
     
-    public get getAddress() : string {
+    public get getaddress() : string {
         return this.address;
     }
     
@@ -68,5 +64,17 @@ export class Customer {
     
     public get getPhone(): string {
         return this.phone;
+    }
+
+    public set setAccounts(accounts: Array<Account> ) {
+        this.accounts = accounts;
+    }
+    
+    public get getAccounts(): Array<Account> {
+        return this.accounts;
+    }
+
+    public addAccounts(account :Account) {
+        this.accounts.push(account);
     }
 }

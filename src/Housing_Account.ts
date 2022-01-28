@@ -13,17 +13,15 @@ export class Housing_Account extends Account{
     }
     
     reports(): any {
-        let importantDates = {
-            'name': this.getCustomer?.getName + ' ' + this.getCustomer?.getLastName,
-            'numberIdentification': this.getCustomer?.getId,
-            'numberAccount': this.getIdentificador,
-        }
-        let dates = {
+        let datos = new Object();
+        datos = {
+            'identificador': this.getIdentificador,
             'balance': this.getBalance,
             'totalMoney': this.getTotalMoney,
-            'interes': this.getInteres
+            'interes': this.getInteres,
+            'comission': undefined
         }
-        const monthlyReport = new MonthlyReportGral(importantDates,dates)
-        return monthlyReport.ShowReport();
+        const monthlyReport = new MonthlyReportGral()
+        return monthlyReport.ShowReport(datos);
     }
 }

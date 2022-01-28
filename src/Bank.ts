@@ -5,8 +5,8 @@ export class Bank {
     private customers: Array<Customer>;
 
     constructor(){
-        this.accounts = [];
-        this.customers = [];
+        this.accounts=[];
+        this.customers=[];
     }
 
     public addAccounts(account: Account){
