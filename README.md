@@ -29,31 +29,19 @@ _Typescript_
 ```
 npm install -g typescript
 ```
-
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
+Iniciar
 
 ```
-Da un ejemplo
+npm build
 ```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
 ```
-Da un ejemplo
+npm start
 ```
-
 ## UML 📦
 
 _Diagrama de Clases y Objetos_
-![Image text](https://64.media.tumblr.com/98151ca60090bb35b33ebcd0cc875571/2af4c45009c8dfe7-7d/s2048x3072/32542c74b78e625f10d76d8b05e2c0d87a5545dd.png)
+![Segundo Diagrama](https://64.media.tumblr.com/98151ca60090bb35b33ebcd0cc875571/2af4c45009c8dfe7-7d/s2048x3072/32542c74b78e625f10d76d8b05e2c0d87a5545dd.png)
+![Tercer Diagrama](https://64.media.tumblr.com/c2dfa97d7e8bd019a2e6c06c90d16d12/93341d61a99fc646-78/s1280x1920/bce735dd75f83384818340a5e67b6a84e8e60d70.png)
 
 ## Construido con 🛠️
 
