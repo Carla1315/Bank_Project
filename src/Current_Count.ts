@@ -10,32 +10,36 @@ export class Current_Count extends Account implements IWithdrawMoney{
         totalMoney: number, customer: Customer|null){
         super (id, totalMoney, customer),
         this.interes = 0.11;
-        this.limitWithdrawMoney=0;
+        this.limitWithdrawMoney = 0;
     }
 
     get getInteres(): number{
         return this.interes;
     }
 
-    withdrawMoney (money: number): boolean{
-        if(this.getTotalMoney - money >= this.limitWithdrawMoney){
-            this.setTotalMoney = this.getTotalMoney - money;
+    withdrawMoney (amount: number): boolean{
+        const newTotalMoney = this.getTotalMoney - amount;
+
+        if(newTotalMoney >= this.limitWithdrawMoney){
+            this.setTotalMoney = newTotalMoney;
             return true;
-        }else{
-            return false;
         }
+        return false;
     }
 
     reports(): any {
-        let datos = new Object();
-        datos = {
-            'identificador': this.getIdentificador,
+        let importantDates = {
+            'name': this.getCustomer?.getName + ' ' + this.getCustomer?.getLastName,
+            'numberIdentification': this.getCustomer?.getId,
+            'numberAccount': this.getIdentificador,
+        }
+        let dates = {
             'balance': this.getBalance,
             'totalMoney': this.getTotalMoney,
             'interes': this.getInteres,
             'comission': this.getCommission
         }
-        const monthlyReport = new MonthlyReportGral()
-        return monthlyReport.ShowReport(datos);
+        const monthlyReport = new MonthlyReportGral(importantDates,dates)
+        return monthlyReport.ShowReport();
     }
 }
