@@ -10,8 +10,8 @@ export class MergeSort implements ISort{
         var lengTempArrayFirst = mergedIndex - leftIndex + 1;
         var lengTempArraySecond = rightIndex - mergedIndex;
     
-        var tempArrayFirst = new Array<any>(lengTempArrayFirst); 
-        var tempArraySecond = new Array<any>(lengTempArraySecond);
+        var tempArrayFirst = new Array<any> (lengTempArrayFirst); 
+        var tempArraySecond = new Array<any> (lengTempArraySecond);
     
         for (var indexFirst = 0; indexFirst < lengTempArrayFirst; indexFirst++)
             tempArrayFirst[indexFirst] = unsortedArray[leftIndex + indexFirst];
