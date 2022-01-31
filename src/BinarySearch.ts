@@ -31,9 +31,9 @@ export class BinarySearch implements ISearch {
         return [];
     }
     searchByID(arraySearch: (string | number)[][], elementSearch: string | number): number[] {
-        return this.binarySearch(arraySearch, 0, arraySearch.length, elementSearch, 0);
+        return this.binarySearch(arraySearch, 0, arraySearch.length - 1, elementSearch, 0);
     }
     searchByNombre(arraySearch: (string | number)[][], elementSearch: string | number): number[] {
-        return this.binarySearch(arraySearch, 0, arraySearch.length, elementSearch, 0);
+        return this.binarySearch(arraySearch, 0, arraySearch.length - 1, elementSearch, 1);
     }
 }

@@ -6,7 +6,7 @@ import { Investment_Fund } from "./Investment_Fund";
 import { QuickSort } from "./QuickSort";
 import { MergeSort } from "./MergeSort";
 import { BinarySearch } from "./BinarySearch";
-import { ExponentialSearch } from "./ExponentialSearch";
+import { LinearSearch } from "./LinearSearch";
 
 /*-----------------Llenar Datos------------------*/
 //Clientes
@@ -131,12 +131,12 @@ function features() {
 /*--------------------Ordenar y Buscar--------------------*/
 function listaOrdenadaPorQuick(){
     console.time('QuickSort')
-    quickSort.sort(listaOrdenadaPorIdQuick, 0, listaOrdenadaPorIdQuick.length-1, 0);
+    quickSort.sortByID(listaOrdenadaPorIdQuick);
     console.timeEnd('QuickSort')
 }
 function listaOrdenadaPorMerge(){
     console.time('MergeSort')
-    mergeSort.sort(listaOrdenadaPorIdMerge, 0, listaOrdenadaPorIdMerge.length-1, 0);
+    mergeSort.sortByID(listaOrdenadaPorIdMerge);
     console.timeEnd('MergeSort')
 }
 console.log('--------------------Ordenar y Buscar--------------------')
@@ -150,20 +150,20 @@ listaOrdenadaPorMerge();
 listaOrdenadaPorQuick();
 //Search
 const binarySearch=new BinarySearch();
-const exponentialSearch=new ExponentialSearch();
+const linearSearch=new LinearSearch();
 console.log('- Tiempo de Busqueda por: ')
 console.time('BinarySearch')
-binarySearch.search(listaOrdenadaPorIdQuick, 0, listaOrdenadaPorIdQuick.length-1, '5234569', 0);
+binarySearch.searchByID(listaOrdenadaPorIdQuick, '5234569');
 console.timeEnd('BinarySearch')
-console.time('ExponentialSearch')
-exponentialSearch.search(listaOrdenadaPorIdQuick, 0, listaOrdenadaPorIdQuick.length-1, '5234569', 0);
-console.timeEnd('ExponentialSearch')
+console.time('LinearSearch')
+linearSearch.searchByID(listaOrdenadaPorIdQuick, '5234569');
+console.timeEnd('LinearSearch')
 /*--------------------Features: Ordenar y Buscar--------------------*/
 console.log('--------------------Features: Ordenar y Buscar--------------------')
 let listaOrdenadaPorId = banco2.getCustomers; 
 let listaOrdenadaPorNombre = banco3.getCustomers; 
-quickSort.sort(listaOrdenadaPorId, 0, listaOrdenadaPorId.length-1, 0);
-quickSort.sort(listaOrdenadaPorNombre, 0, listaOrdenadaPorNombre.length-1, 1);
+quickSort.sortByID(listaOrdenadaPorId);
+quickSort.sortByNombre(listaOrdenadaPorNombre);
 //Lista de Clientes ordenadas
 console.log('- Lista Ordenado por ID')
 listaOrdenadaPorId.forEach(element => {
@@ -175,14 +175,14 @@ listaOrdenadaPorNombre.forEach(element => {
 });
 //Busqueda
 console.log('- Busqueda por ID')
-var resultados = binarySearch.search(listaOrdenadaPorId, 0, listaOrdenadaPorId.length-1, '5234569', 0);
+var resultados = binarySearch.searchByID(listaOrdenadaPorId, '5234569');
 for (let index = 0; index < resultados.length; index++) {
     console.log(listaOrdenadaPorId[resultados[index]][0]+' '+
     listaOrdenadaPorId[resultados[index]][1]+' '+
     listaOrdenadaPorId[resultados[index]][2]);
 }
 console.log('- Busqueda por Nombre')
-var resultados = binarySearch.search(listaOrdenadaPorNombre, 0, listaOrdenadaPorNombre.length-1, 'Pedro', 1);
+var resultados = binarySearch.searchByNombre(listaOrdenadaPorNombre, 'Pedro');
 for (let index = 0; index < resultados.length; index++) {
     console.log(listaOrdenadaPorNombre[resultados[index]][0]+' '+
     listaOrdenadaPorNombre[resultados[index]][1]+' '+

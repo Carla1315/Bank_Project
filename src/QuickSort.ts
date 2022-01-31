@@ -36,9 +36,9 @@ export class QuickSort implements ISort{
         }
     }
     sortByID(unsortedArray: (string | number)[][]): void {
-        this.quickSort(unsortedArray, 0, unsortedArray.length, 0)
+        this.quickSort(unsortedArray, 0, unsortedArray.length - 1, 0)
     }
     sortByNombre(unsortedArray: (string | number)[][]): void {
-        this.quickSort(unsortedArray, 0, unsortedArray.length, 1)
+        this.quickSort(unsortedArray, 0, unsortedArray.length - 1, 1)
     }
 }

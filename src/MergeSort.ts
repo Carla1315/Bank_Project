@@ -58,9 +58,9 @@ export class MergeSort implements ISort{
         this.merge (unsortedArray, leftIndex, mergedIndex, rightIndex, positionElementSort);
     }
     sortByID(unsortedArray: (string | number)[][]): void {
-        this.mainMerge(unsortedArray, 0, unsortedArray.length, 0)
+        this.mainMerge(unsortedArray, 0, unsortedArray.length - 1, 0)
     }
     sortByNombre(unsortedArray: (string | number)[][]): void {
-        this.mainMerge(unsortedArray, 0, unsortedArray.length, 1)
+        this.mainMerge(unsortedArray, 0, unsortedArray.length - 1, 1)
     }
 }
