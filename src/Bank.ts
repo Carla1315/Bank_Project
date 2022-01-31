@@ -2,7 +2,7 @@ import { Account } from "./Account";
 import { Customer } from "./Customer";
 export class Bank { 
     private accounts: Array<Account>;
-    private customers: Array <number | string>[];
+    private customers: Array <Customer>;
 
     constructor(){
         this.accounts = [];
@@ -18,21 +18,14 @@ export class Bank {
     }
 
     public addCustomers(customer: Customer){
-        this.customers.push([
-            customer.getId,
-            customer.getName,
-            customer.getLastName,
-            customer.getAddress,
-            customer.getPhone,
-            customer.getCellPhone
-        ]);
+        this.customers.push(customer);
     }
     
-    public set setCustomers(customers: Array <number | string>[]) {
+    public set setCustomers(customers: Array <Customer>) {
         this.customers = customers;
     }
     
-    public get getCustomers(): Array <number | string>[]{
+    public get getCustomers(): Array <Customer>{
         return this.customers;
     }
 }

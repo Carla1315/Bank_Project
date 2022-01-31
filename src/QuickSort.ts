@@ -1,6 +1,11 @@
 import { ISort } from "./ISort";
 
 export class QuickSort implements ISort{
+    constructor(
+        readonly unsortedArray: (string | number)[][]
+    ){
+        this.unsortedArray = unsortedArray;
+    }
 
     swap(unsortedArray: Array<number|string>[], punteroi: number, punteroj: number) {
         let temp = unsortedArray[punteroi];
@@ -35,10 +40,10 @@ export class QuickSort implements ISort{
             this.quickSort(unsortedArray, pivot + 1, rightIndex,PositionElementSort);
         }
     }
-    sortByID(unsortedArray: (string | number)[][]): void {
-        this.quickSort(unsortedArray, 0, unsortedArray.length - 1, 0)
+    sortByID(): void {
+        this.quickSort(this.unsortedArray, 0, this.unsortedArray.length - 1, 0)
     }
-    sortByNombre(unsortedArray: (string | number)[][]): void {
-        this.quickSort(unsortedArray, 0, unsortedArray.length - 1, 1)
+    sortByNombre(): void {
+        this.quickSort(this.unsortedArray, 0, this.unsortedArray.length - 1, 1)
     }
 }

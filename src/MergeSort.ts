@@ -1,6 +1,11 @@
 import { ISort } from "./ISort";
 
 export class MergeSort implements ISort{
+    constructor(
+        readonly unsortedArray: (string | number)[][]
+    ){
+        this.unsortedArray = unsortedArray;
+    }
     merge(unsortedArray: Array<number|string>[], 
         leftIndex: number, 
         mergedIndex: number, 
@@ -57,10 +62,10 @@ export class MergeSort implements ISort{
         this.mainMerge (unsortedArray, mergedIndex + 1, rightIndex, positionElementSort);
         this.merge (unsortedArray, leftIndex, mergedIndex, rightIndex, positionElementSort);
     }
-    sortByID(unsortedArray: (string | number)[][]): void {
-        this.mainMerge(unsortedArray, 0, unsortedArray.length - 1, 0)
+    sortByID(): void {
+        this.mainMerge(this.unsortedArray, 0, this.unsortedArray.length - 1, 0)
     }
-    sortByNombre(unsortedArray: (string | number)[][]): void {
-        this.mainMerge(unsortedArray, 0, unsortedArray.length - 1, 1)
+    sortByNombre(): void {
+        this.mainMerge(this.unsortedArray, 0, this.unsortedArray.length - 1, 1)
     }
 }

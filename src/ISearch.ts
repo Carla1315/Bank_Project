@@ -1,6 +1,5 @@
 export interface ISearch{
-    searchByID(arraySearch: Array<number | string>[], 
-        elementSearch: number | string): Array<number>;
-    searchByNombre(arraySearch: Array<number | string>[], 
-        elementSearch: number | string): Array<number>;
+    arraySearch: Array<number | string>[], 
+    searchByID(elementSearch: number | string): Array<number|string>[];
+    searchByNombre(elementSearch: number | string): Array<number|string>[];
 }
