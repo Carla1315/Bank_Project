@@ -3,99 +3,227 @@ import { Customer } from "./Customer";
 import { Current_Count } from "./Current_Count";
 import { Housing_Account } from "./Housing_Account";
 import { Investment_Fund } from "./Investment_Fund";
+import { QuickSort } from "./QuickSort";
+import { MergeSort } from "./MergeSort";
+import { BinarySearch } from "./BinarySearch";
+import { LinearSearch } from "./LinearSearch";
+import * as clientes from './json_examples/Customer.json';
+import { Account } from "./Account";
 
-//Clientes
-const cliente = new Customer('1', 'Saly', 'Ramos', 'Av. Maestro N°544', '62-45565', '79453285');
-const cliente2 = new Customer('2', 'Ruth', 'Ramirez', 'Calle Oruro N°45', '62-85469', '74521368');
-//Cuentas
-const cuentaCliente = new Current_Count('0001', 100, cliente);
-const cuentaCliente2 = new Investment_Fund('0002', 50, cliente);
-const cuentaCliente3 = new Current_Count('0003', 200, cliente2);
-const cuentaCliente4 = new Housing_Account('0004', 20, cliente2);
-const cuentaSinCliente = new Current_Count('0005', 100, null);
-//Banco
-let banco=new Bank();
-banco.addAccounts(cuentaCliente);
-banco.addAccounts(cuentaCliente2);
-banco.addAccounts(cuentaCliente3);
-banco.addAccounts(cuentaCliente4);
-banco.addAccounts(cuentaSinCliente);
-banco.addCustomers(cliente);
-banco.addCustomers(cliente2);
+const banco = new Bank();
+let listaGeneral : Array<string | number>[];
+let listaPruebaQ : Array<string | number>[];
+let listaPruebaM : Array<string | number>[];
+function dates(){
+    var list = clientes;
+    listaGeneral = [];
+    listaPruebaQ = [];
+    listaPruebaM = [];
+    for (let index = 0; index < 100; index++) {
+        const customerTemp = new Customer(
+            list[index].id.toString(), 
+            list[index].name, 
+            list[index].last_name, 
+            list[index].address, 
+            list[index].phone.toString(), 
+            list[index].cellPhone.toString());
+        banco.addCustomers(customerTemp);
 
-//Lista de cuentas y clientes
-console.log('- Lista de cuentas y clientes');
-banco.getAccounts.forEach(element => {
-    console.log(
-        element.getIdentificador + ' ' +
-        (element.getCustomer != null ? element.getCustomer.getName: 'Sin Cliente'))
-});
-banco.getCustomers.forEach(element => {
-    console.log(
-        element.getId + ' ' +
-        element.getName + ' ' +
-        element.getLastName)
-});
-//Check Account Data
-console.log('- Check Account Data');
-let datosCuentaCliente = cuentaCliente.checkAccountData();
-console.log(JSON.stringify(datosCuentaCliente))
-//Enter Money
-console.log('- Enter Money');
-cuentaCliente.enterMoney(55);
-console.log('Depositando 55 Saldo Actual: ' + cuentaCliente.getTotalMoney);
-console.log('Puntos: '+cuentaCliente.getPointAccounts)
-//Withdraw Money
-console.log('- Withdraw Money: 30');
-cuentaCliente.withdrawMoney(30);
-console.log('Retirando 30 Saldo Actual: ' + cuentaCliente.getTotalMoney);
-//Check Balance
-console.log('- Check Balance');
-cuentaCliente.checkBalance();
-console.log('Balance: ' + cuentaCliente.getBalance);
-//Change Client
-console.log('- Change Client');
-console.log(
-    'Cliente: ' + cuentaCliente3.getCustomer?.getId 
-    + ' ' + cuentaCliente3.getCustomer?.getName 
-    + ' ' + cuentaCliente3.getCustomer?.getLastName
-    + ' Numero de Cuenta: ' + cuentaCliente3.getIdentificador)
-cuentaCliente3.changeClient(cliente);
-console.log(
-    'Cliente: ' + cuentaCliente3.getCustomer?.getId 
-    + ' ' + cuentaCliente3.getCustomer?.getName 
-    + ' ' + cuentaCliente3.getCustomer?.getLastName
-    + ' Numero de Cuenta: ' + cuentaCliente3.getIdentificador)
-//Monthly Report
-console.log('- Monthly Report');
-const ReporteMensual = cuentaCliente.reports();
-console.log('balance:'+ cuentaCliente.getTotalMoney+' interes:'+cuentaCliente.getInteres+' commision:'+cuentaCliente.getCommission)
-console.log('Reporte Mensual: ' + JSON.stringify(ReporteMensual))
-const ReporteMensual2 = cuentaCliente4.reports();
-console.log('Cuenta HA balance:'+ cuentaCliente4.getTotalMoney+' interes:'+ cuentaCliente4.getInteres)
-console.log('Reporte Mensual: ' + JSON.stringify(ReporteMensual2))
-//Modificar comision
-console.log('- Modificar comision:')
-console.log('commision:'+ cuentaCliente4.getCommission)
-cuentaCliente4.setCommission=2,2;
-console.log('commision:'+ cuentaCliente4.getCommission)
-//Interest value
-console.log('- Interest value:')
-console.log('CC:'+ cuentaCliente.getInteres)
-console.log('IF:'+ cuentaCliente2.getInteres)
-console.log('HA:'+ cuentaCliente4.getInteres)
-//You cannot get more money from CC than there is
-console.log('- CC')
-console.log('You cannot get more money from CC than there is: -250')
-console.log('¿Se logro retirar dinero? ' + cuentaCliente3.withdrawMoney(250));
-console.log('- IF')
-console.log('from IF you can get up to 600$ of red numbers : -250')
-console.log('¿Se logro retirar dinero? '+ cuentaCliente2.withdrawMoney(250));
-console.log('from IF you can get up to 600$ of red numbers : -1000')
-console.log('¿Se logro retirar dinero? '+ cuentaCliente2.withdrawMoney(1000));
-console.log('Cuenta bloqueada: ' + cuentaCliente2.getBlock)
-console.log('- HA')
-console.log('HA cannot withdraw money')
-//A bank has points account, each time 10$ is entered, one account point is added.
-console.log('- getPointAccounts')
-console.log(cuentaCliente.getPointAccounts)
+        const customerListPrueba =[
+            list[index].id.toString(), 
+            list[index].name, 
+            list[index].last_name, 
+            list[index].address, 
+            list[index].phone.toString(), 
+            list[index].cellPhone.toString()
+        ];
+        listaGeneral.push(customerListPrueba);
+        listaPruebaQ.push(customerListPrueba);
+        listaPruebaM.push(customerListPrueba);
+    }
+}
+function ListAccounts(list: Array<Account>){
+    console.log('- Lista de cuentas');
+    list.forEach(element => {
+        console.log(
+            element.getIdentificador + ' ' +
+            (element.getCustomer != null ? element.getCustomer.getName: 'Sin Cliente'))
+    });
+}
+function ListCustomers(list: Array<Customer>){
+    console.log('- Lista de clientes');
+    list.forEach(element => {
+        console.log(
+            element.getId + ' ' +
+            element.getName + ' ' +
+            element.getLastName + ' ' +
+            element.getAddress + ' ' +
+            element.getPhone + ' ' +
+            element.getPhone)
+    });
+}
+function ListNormal(list: Array<string | number>[]) {
+    console.log('- Lista de clientes');
+    list.forEach(element => {
+        console.log(element[0] + ' ' + element[1] + ' ' + element[2]);
+    });
+}
+function CheckAccountData(cuentaCliente: Account){
+    let datosCuentaCliente = cuentaCliente.checkAccountData();
+    console.log(JSON.stringify(datosCuentaCliente))
+}
+function EnterMoney(cuentaCliente: Account, money: number) {
+    console.log('- Enter Money');
+    cuentaCliente.enterMoney(money);
+    console.log('Depositando ' + money + ' Saldo Actual: ' + cuentaCliente.getTotalMoney);
+    console.log('Puntos: '+cuentaCliente.getPointAccounts)
+}
+function WithdrawMoney(cuentaCliente: Current_Count | Investment_Fund, money: number) {
+    console.log('- Withdraw Money: 30');
+    var isWithdrawMoney = cuentaCliente.withdrawMoney(money);
+    if (isWithdrawMoney)
+        console.log('Retirando ' + money + ' 30 Saldo Actual: ' + cuentaCliente.getTotalMoney);
+    else {
+        console.log(money + ' Sobre-exede su saldo: ' + cuentaCliente.getTotalMoney);
+    }
+}
+function CheckBalance(cuentaCliente: Account) {
+    console.log('- Check Balance');
+    cuentaCliente.checkBalance();
+    console.log('Balance: ' + cuentaCliente.getBalance);
+}
+function ChangeClient(prevClient: Customer, nextClient: Customer, cuentaCliente: Account) {
+    cuentaCliente.changeClient(nextClient);
+    console.log(cuentaCliente.setCustomer);
+}
+function MonthlyReport(cuentaCliente: Account) {
+    console.log('- Monthly Report');
+    const ReporteMensual = cuentaCliente.reports();
+    ReporteMensual.forEach(element => {
+        console.log(element + ' ');
+    });
+}
+function EditComision(cuentaCliente4: Account, newCommision: number) {
+    console.log('- Modificar comision:')
+    cuentaCliente4.setCommission=newCommision;
+    console.log('commision:'+ cuentaCliente4.getCommission)
+}
+function PointsAccount(cuentaCliente: Account) {
+    console.log('- getPointAccounts')
+    console.log(cuentaCliente.getPointAccounts)
+}
+function SortId (lista: Array<string | number>[]) {
+    const quickSort=new QuickSort(lista);
+    quickSort.sortByID();
+    ListNormal(lista);
+    
+}
+function SortName(lista: Array<string | number>[]) {
+    const quickSort=new QuickSort(lista);
+    quickSort.sortByNombre();
+    ListNormal(lista);
+}
+function SearchId(lista: Array<string | number>[], element: string | number) {
+    const quickSort=new QuickSort(lista);
+    quickSort.sortByID();
+    var binarySearch = new BinarySearch(lista);
+    var resultados = binarySearch.searchByID(element);
+    ListNormal(resultados);
+    
+}
+function SearchName(lista: Array<string | number>[], element: string | number) {
+    const quickSort=new QuickSort(lista);
+    quickSort.sortByNombre();
+    var binarySearch = new BinarySearch(lista);
+    var resultados = binarySearch.searchByNombre(element);
+    ListNormal(resultados);
+}
+function InformSortAndSearch() {
+    console.log('- Tiempo de Ordenado por: ')
+    const mergeSort=new MergeSort(listaPruebaM);
+    const quickSort=new QuickSort(listaPruebaQ);
+    const lista = listaPruebaQ;
+
+    console.time('MergeSort')
+    mergeSort.sortByID();
+    console.timeEnd('MergeSort')
+
+    console.time('QuickSort')
+    quickSort.sortByID();
+    console.timeEnd('QuickSort')
+    
+    const binarySearch = new BinarySearch(lista);
+    const linearSearch = new LinearSearch(lista);
+    console.log('- Tiempo de Busqueda por: ')
+    console.time('BinarySearch')
+    console.log(binarySearch.searchByID('9957548'));
+    console.timeEnd('BinarySearch')
+
+    console.time('LinearSearch')
+    linearSearch.searchByID('9957548');
+    console.timeEnd('LinearSearch')
+}
+
+function main(){
+    dates();
+    const clienteGeneral = new Customer (
+        clientes[0].id.toString(), 
+        clientes[0].name, 
+        clientes[0].last_name, 
+        clientes[0].address, 
+        clientes[0].phone.toString(), 
+        clientes[0].cellPhone.toString())
+    const clienteCambio = new Customer (
+        clientes[1].id.toString(), 
+        clientes[1].name, 
+        clientes[1].last_name, 
+        clientes[1].address, 
+        clientes[1].phone.toString(), 
+        clientes[1].cellPhone.toString())
+    //Cuentas
+    const cuentaCC = new Current_Count('0001', 100, clienteGeneral);
+    const cuentaIF = new Investment_Fund('0002', 50, clienteGeneral);
+    const cuentaHA = new Housing_Account('0004', 20, clienteGeneral);
+    //Banco
+    banco.addAccounts(cuentaCC);
+    banco.addAccounts(cuentaIF);
+    banco.addAccounts(cuentaHA);
+    const lista = banco.getCustomers;
+    //Menu
+    var option = 14;
+    switch (option) {
+        case 1: ListAccounts(banco.getAccounts)
+            break;
+        case 2: ListCustomers(banco.getCustomers)
+            break;
+        case 3: CheckAccountData(cuentaCC);
+            break;
+        case 4: EnterMoney(cuentaCC, 55);
+            break;
+        case 5: WithdrawMoney(cuentaIF, 700);
+            break;
+        case 6: CheckBalance(cuentaCC);
+            break;
+        case 7: ChangeClient(clienteGeneral, clienteCambio, cuentaCC);
+            break;
+        case 8: MonthlyReport(cuentaHA);
+            break;
+        case 9: EditComision(cuentaCC, 2);
+            break;
+        case 10: PointsAccount(cuentaCC);
+            break;
+        case 11: SortId(listaGeneral);
+            break;
+        case 12: SortName(listaGeneral);
+            break;
+        case 13: SearchId(listaGeneral,'1656342');
+            break;
+        case 14: SearchName(listaGeneral,'Roma');
+            break;
+        case 14: InformSortAndSearch();
+            break;
+        default:
+            break;
+    }
+}
+main();
