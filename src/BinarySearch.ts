@@ -1,35 +1,39 @@
 import { ISearch } from "./ISearch";
 
 export class BinarySearch implements ISearch {
-    constructor(){
-    }
-    search(arraySearch: Array<number|string>[], 
+    binarySearch(arraySearch: Array<number|string>[], 
         leftPosition: number, 
         rightPosition: number, 
         elementSearch: number|string,
-        tipo: number
+        positionElementSearch: number
     ): Array<number>
     {
         if (rightPosition >= leftPosition) {
             let middle = leftPosition + Math.floor((rightPosition - leftPosition) / 2);
      
-            if (arraySearch[middle][tipo] == elementSearch){
+            if (arraySearch[middle][positionElementSearch] == elementSearch){
                 let index= [];
                 index.push(middle);
                 var indexSearchMore = middle + 1;
-                while (arraySearch[indexSearchMore][tipo] == elementSearch) {
+                while (arraySearch[indexSearchMore][positionElementSearch] == elementSearch) {
                     index.push(indexSearchMore);
                     indexSearchMore++;
                 }
                 return index;
             }
      
-            if (arraySearch[middle][tipo] > elementSearch){
-                return this.search(arraySearch, leftPosition, middle - 1, elementSearch,tipo);}
+            if (arraySearch[middle][positionElementSearch] > elementSearch){
+                return this.binarySearch(arraySearch, leftPosition, middle - 1, elementSearch,positionElementSearch);}
      
-            return this.search(arraySearch, middle + 1, rightPosition, elementSearch,tipo);
+            return this.binarySearch(arraySearch, middle + 1, rightPosition, elementSearch,positionElementSearch);
         }
      
         return [];
+    }
+    searchByID(arraySearch: (string | number)[][], elementSearch: string | number): number[] {
+        return this.binarySearch(arraySearch, 0, arraySearch.length, elementSearch, 0);
+    }
+    searchByNombre(arraySearch: (string | number)[][], elementSearch: string | number): number[] {
+        return this.binarySearch(arraySearch, 0, arraySearch.length, elementSearch, 0);
     }
 }

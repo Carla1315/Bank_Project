@@ -5,7 +5,7 @@ export class MergeSort implements ISort{
         leftIndex: number, 
         mergedIndex: number, 
         rightIndex: number,
-        tipo: number)
+        positionElementSort: number)
     {
         var lengTempArrayFirst = mergedIndex - leftIndex + 1;
         var lengTempArraySecond = rightIndex - mergedIndex;
@@ -24,7 +24,7 @@ export class MergeSort implements ISort{
         var indexMerged = leftIndex;
     
         while (indexFirst < lengTempArrayFirst && indexSecond < lengTempArraySecond) {
-            if (tempArrayFirst[indexFirst][tipo] <= tempArraySecond[indexSecond][tipo] ) {
+            if (tempArrayFirst[indexFirst][positionElementSort] <= tempArraySecond[indexSecond][positionElementSort] ) {
                 unsortedArray[indexMerged] = tempArrayFirst[indexFirst];
                 indexFirst++;
             }
@@ -48,13 +48,19 @@ export class MergeSort implements ISort{
         }
     }
     
-    sort(unsortedArray: Array<number|string>[], leftIndex: number, rightIndex: number, tipo:number){
+    mainMerge(unsortedArray: Array<number|string>[], leftIndex: number, rightIndex: number, positionElementSort:number){
         if(leftIndex >= rightIndex){
             return;
         }
         var mergedIndex = leftIndex +  Math.floor((rightIndex - leftIndex) / 2);
-        this.sort (unsortedArray, leftIndex, mergedIndex, tipo);
-        this.sort (unsortedArray, mergedIndex + 1, rightIndex, tipo);
-        this.merge (unsortedArray, leftIndex, mergedIndex, rightIndex, tipo);
+        this.mainMerge (unsortedArray, leftIndex, mergedIndex, positionElementSort);
+        this.mainMerge (unsortedArray, mergedIndex + 1, rightIndex, positionElementSort);
+        this.merge (unsortedArray, leftIndex, mergedIndex, rightIndex, positionElementSort);
+    }
+    sortByID(unsortedArray: (string | number)[][]): void {
+        this.mainMerge(unsortedArray, 0, unsortedArray.length, 0)
+    }
+    sortByNombre(unsortedArray: (string | number)[][]): void {
+        this.mainMerge(unsortedArray, 0, unsortedArray.length, 1)
     }
 }

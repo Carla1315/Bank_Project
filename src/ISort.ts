@@ -1,6 +1,4 @@
 export interface ISort{
-    sort(unsortedArray: Array<number|string>[], 
-        firstPosition: number, 
-        lastPosition: number,
-        tipo: number): void;
+    sortByID(unsortedArray: Array<number | string>[]): void;
+    sortByNombre(unsortedArray: Array<number | string>[]): void;
 }

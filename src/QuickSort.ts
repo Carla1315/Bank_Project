@@ -1,7 +1,6 @@
 import { ISort } from "./ISort";
 
 export class QuickSort implements ISort{
-    constructor() {}
 
     swap(unsortedArray: Array<number|string>[], punteroi: number, punteroj: number) {
         let temp = unsortedArray[punteroi];
@@ -9,33 +8,37 @@ export class QuickSort implements ISort{
         unsortedArray[punteroj] = temp;
     }
 
-    partition(unsortedArray: Array<number|string>[], low: number, high: number, tipo: number) {
+    partition(unsortedArray: Array<number|string>[], leftIndex: number, rightIndex: number, PositionElementSort: number) {
 
-        let pivot = unsortedArray[high][tipo];
+        let pivot = unsortedArray[rightIndex][PositionElementSort];
 
-        let punteroi = (low - 1);
+        let punteroi = (leftIndex - 1);
 
-        for (let punteroj = low; punteroj <= high - 1; punteroj++) {
+        for (let punteroj = leftIndex; punteroj <= rightIndex - 1; punteroj++) {
 
-            //cambiar para dec
-            if (unsortedArray[punteroj][tipo] < pivot) {
+            if (unsortedArray[punteroj][PositionElementSort] < pivot) {
 
                 punteroi++;
                 this.swap(unsortedArray, punteroi, punteroj);
             }
         }
-        this.swap(unsortedArray, punteroi + 1, high);
+        this.swap(unsortedArray, punteroi + 1, rightIndex);
         return (punteroi + 1);
     }
 
-    sort(unsortedArray: Array<number|string>[], low: number, high: number, tipo: number) {
-        if (low < high) {
+    quickSort(unsortedArray: Array<number|string>[], leftIndex: number, rightIndex: number, PositionElementSort: number) {
+        if (leftIndex < rightIndex) {
 
-            let pi = this.partition(unsortedArray, low, high,tipo);
+            let pivot = this.partition(unsortedArray, leftIndex, rightIndex,PositionElementSort);
 
-            this.sort(unsortedArray, low, pi - 1,tipo);
-            this.sort(unsortedArray, pi + 1, high,tipo);
+            this.quickSort(unsortedArray, leftIndex, pivot - 1,PositionElementSort);
+            this.quickSort(unsortedArray, pivot + 1, rightIndex,PositionElementSort);
         }
     }
-
+    sortByID(unsortedArray: (string | number)[][]): void {
+        this.quickSort(unsortedArray, 0, unsortedArray.length, 0)
+    }
+    sortByNombre(unsortedArray: (string | number)[][]): void {
+        this.quickSort(unsortedArray, 0, unsortedArray.length, 1)
+    }
 }
