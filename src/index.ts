@@ -4,7 +4,7 @@ import { Current_Count } from "./Current_Count";
 import { Housing_Account } from "./Housing_Account";
 import { Investment_Fund } from "./Investment_Fund";
 import { QuickSort } from "./QuickSort";
-import { MergeSort } from "./MergeSort";
+import { BubbleSort } from "./BubbleSort";
 import { BinarySearch } from "./BinarySearch";
 import { LinearSearch } from "./LinearSearch";
 import * as clientes from './json_examples/Customer.json';
@@ -140,23 +140,23 @@ function SearchName(lista: Array<string | number>[], element: string | number) {
 }
 function InformSortAndSearch() {
     console.log('- Tiempo de Ordenado por: ')
-    const mergeSort=new MergeSort(listaPruebaM);
+    const bubbleSort=new BubbleSort(listaPruebaM);
     const quickSort=new QuickSort(listaPruebaQ);
     const lista = listaPruebaQ;
-
-    console.time('MergeSort')
-    mergeSort.sortByID();
-    console.timeEnd('MergeSort')
 
     console.time('QuickSort')
     quickSort.sortByID();
     console.timeEnd('QuickSort')
+
+    console.time('BubbleSort')
+    bubbleSort.sortByID();
+    console.timeEnd('BubbleSort')
     
     const binarySearch = new BinarySearch(lista);
     const linearSearch = new LinearSearch(lista);
     console.log('- Tiempo de Busqueda por: ')
     console.time('BinarySearch')
-    console.log(binarySearch.searchByID('9957548'));
+    binarySearch.searchByID('9957548');
     console.timeEnd('BinarySearch')
 
     console.time('LinearSearch')
@@ -188,9 +188,8 @@ function main(){
     banco.addAccounts(cuentaCC);
     banco.addAccounts(cuentaIF);
     banco.addAccounts(cuentaHA);
-    const lista = banco.getCustomers;
     //Menu
-    var option = 14;
+    var option = 15;
     switch (option) {
         case 1: ListAccounts(banco.getAccounts)
             break;
@@ -220,7 +219,7 @@ function main(){
             break;
         case 14: SearchName(listaGeneral,'Roma');
             break;
-        case 14: InformSortAndSearch();
+        case 15: InformSortAndSearch();
             break;
         default:
             break;
