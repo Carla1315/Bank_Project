@@ -4,21 +4,27 @@ import { Current_Count } from "./Current_Count";
 import { Housing_Account } from "./Housing_Account";
 import { Investment_Fund } from "./Investment_Fund";
 import { QuickSort } from "./QuickSort";
-import { MergeSort } from "./MergeSort";
+import { BubbleSort } from "./BubbleSort";
 import { BinarySearch } from "./BinarySearch";
 import { LinearSearch } from "./LinearSearch";
 import * as clientes from './json_examples/Customer.json';
 import { Account } from "./Account";
+import { BubbleSortWhithFP } from "./BubbleSortWithFP";
+import { LinearSearchFP } from "./LinearSearchWithFP";
 
 const banco = new Bank();
 let listaGeneral : Array<string | number>[];
 let listaPruebaQ : Array<string | number>[];
-let listaPruebaM : Array<string | number>[];
+let listaPruebaB : Array<string | number>[];
+let listaPruebaBFP : Array<string | number>[];
+let listaPruebaBFP2 : Array<string | number>[];
 function dates(){
     var list = clientes;
     listaGeneral = [];
     listaPruebaQ = [];
-    listaPruebaM = [];
+    listaPruebaB = [];
+    listaPruebaBFP = [];
+    listaPruebaBFP2 = [];
     for (let index = 0; index < 100; index++) {
         const customerTemp = new Customer(
             list[index].id.toString(), 
@@ -39,7 +45,9 @@ function dates(){
         ];
         listaGeneral.push(customerListPrueba);
         listaPruebaQ.push(customerListPrueba);
-        listaPruebaM.push(customerListPrueba);
+        listaPruebaB.push(customerListPrueba);
+        listaPruebaBFP.push(customerListPrueba);
+        listaPruebaBFP2.push(customerListPrueba);
     }
 }
 function ListAccounts(list: Array<Account>){
@@ -140,28 +148,54 @@ function SearchName(lista: Array<string | number>[], element: string | number) {
 }
 function InformSortAndSearch() {
     console.log('- Tiempo de Ordenado por: ')
-    const mergeSort=new MergeSort(listaPruebaM);
-    const quickSort=new QuickSort(listaPruebaQ);
+    const bubbleSort = new BubbleSort(listaPruebaB);
+    const quickSort = new QuickSort(listaPruebaQ);
     const lista = listaPruebaQ;
-
-    console.time('MergeSort')
-    mergeSort.sortByID();
-    console.timeEnd('MergeSort')
 
     console.time('QuickSort')
     quickSort.sortByID();
     console.timeEnd('QuickSort')
+
+    console.time('BubbleSort')
+    bubbleSort.sortByID();
+    console.timeEnd('BubbleSort')
     
     const binarySearch = new BinarySearch(lista);
     const linearSearch = new LinearSearch(lista);
     console.log('- Tiempo de Busqueda por: ')
     console.time('BinarySearch')
-    console.log(binarySearch.searchByID('9957548'));
+    binarySearch.searchByID('9957548');
     console.timeEnd('BinarySearch')
 
     console.time('LinearSearch')
     linearSearch.searchByID('9957548');
     console.timeEnd('LinearSearch')
+}
+
+function InformSortAndSearchWithFP() {
+    console.log('- Tiempo de Ordenado por: ')
+    const bubbleSortWhithFP = new BubbleSortWhithFP(listaPruebaBFP);
+    const bubbleSort = new BubbleSort(listaPruebaBFP2);
+    const lista = listaPruebaQ;
+
+    console.time('BubbleSortWhithFP')
+    bubbleSortWhithFP.sortByID();
+    console.timeEnd('BubbleSortWhithFP')
+    
+    console.time('BubbleSort')
+    bubbleSort.sortByID();
+    console.timeEnd('BubbleSort')
+
+    const linearSearchFP = new LinearSearchFP(lista);
+    const linearSearch = new LinearSearch(lista);
+    console.log('- Tiempo de Busqueda por: ')
+    console.time('LinearSearch')
+    linearSearch.searchByID('9957548');
+    console.timeEnd('LinearSearch')
+    
+    console.time('LinearSearchFP')
+    linearSearchFP.searchByID('9957548');
+    console.timeEnd('LinearSearchFP')
 }
 
 function main(){
@@ -188,9 +222,8 @@ function main(){
     banco.addAccounts(cuentaCC);
     banco.addAccounts(cuentaIF);
     banco.addAccounts(cuentaHA);
-    const lista = banco.getCustomers;
     //Menu
-    var option = 14;
+    var option = 16;
     switch (option) {
         case 1: ListAccounts(banco.getAccounts)
             break;
@@ -220,7 +253,9 @@ function main(){
             break;
         case 14: SearchName(listaGeneral,'Roma');
             break;
-        case 14: InformSortAndSearch();
+        case 15: InformSortAndSearch();
+            break;
+        case 16: InformSortAndSearchWithFP();
             break;
         default:
             break;
