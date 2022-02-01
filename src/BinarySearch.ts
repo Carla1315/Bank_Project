@@ -7,7 +7,8 @@ export class BinarySearch implements ISearch {
         this.arraySearch = arraySearch;
     }
 
-    binarySearch(arraySearch: Array<number|string>[], 
+    binarySearch(
+        arraySearch: Array<number|string>[], 
         leftPosition: number, 
         rightPosition: number, 
         elementSearch: number|string,
@@ -31,9 +32,18 @@ export class BinarySearch implements ISearch {
             }
      
             if (arraySearch[middle][positionElementSearch] > elementSearch){
-                return this.binarySearch(arraySearch, leftPosition, middle - 1, elementSearch,positionElementSearch);}
-     
-            return this.binarySearch(arraySearch, middle + 1, rightPosition, elementSearch,positionElementSearch);
+                return this.binarySearch(
+                    arraySearch, leftPosition, 
+                    middle - 1, 
+                    elementSearch,
+                    positionElementSearch);
+            }
+            return this.binarySearch(
+                arraySearch, 
+                middle + 1, 
+                rightPosition, 
+                elementSearch,
+                positionElementSearch);
         }
      
         return [];

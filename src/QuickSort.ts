@@ -8,21 +8,17 @@ export class QuickSort implements ISort{
     }
 
     swap(unsortedArray: Array<number|string>[], punteroi: number, punteroj: number) {
-        let temp = unsortedArray[punteroi];
-        unsortedArray[punteroi] = unsortedArray[punteroj];
-        unsortedArray[punteroj] = temp;
+        unsortedArray[punteroi] = unsortedArray.splice(punteroj, 1, unsortedArray[punteroi])[0]
     }
 
     partition(unsortedArray: Array<number|string>[], leftIndex: number, rightIndex: number, PositionElementSort: number) {
 
         let pivot = unsortedArray[rightIndex][PositionElementSort];
-
         let punteroi = (leftIndex - 1);
 
         for (let punteroj = leftIndex; punteroj <= rightIndex - 1; punteroj++) {
 
             if (unsortedArray[punteroj][PositionElementSort] < pivot) {
-
                 punteroi++;
                 this.swap(unsortedArray, punteroi, punteroj);
             }
@@ -31,9 +27,13 @@ export class QuickSort implements ISort{
         return (punteroi + 1);
     }
 
-    quickSort(unsortedArray: Array<number|string>[], leftIndex: number, rightIndex: number, PositionElementSort: number) {
+    quickSort(
+        unsortedArray: Array<number|string>[], 
+        leftIndex: number, 
+        rightIndex: number, 
+        PositionElementSort: number
+    ) {
         if (leftIndex < rightIndex) {
-
             let pivot = this.partition(unsortedArray, leftIndex, rightIndex,PositionElementSort);
 
             this.quickSort(unsortedArray, leftIndex, pivot - 1,PositionElementSort);

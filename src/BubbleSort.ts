@@ -14,9 +14,7 @@ export class BubbleSort implements ISort{
             checked = false;
             for (let puntero = 0; puntero < lengthunsortedArray-1; puntero++) {
                 if (unsortedArray[puntero][PositionElementSort] > unsortedArray[puntero + 1][PositionElementSort]) {
-                    let temporal = unsortedArray[puntero];
-                    unsortedArray[puntero] = unsortedArray[puntero + 1];
-                    unsortedArray[puntero + 1] = temporal;
+                    unsortedArray[puntero] = unsortedArray.splice(puntero + 1, 1, unsortedArray[puntero])[0]
                     checked = true;
                 }
             }

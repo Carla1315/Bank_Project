@@ -74,16 +74,13 @@ export abstract class Account {
         return this.block;
     }
 
-    checkAccountData(): Object{
-        let datos = new Object();
-        datos = {
-            'customer': this.getCustomer?.getName + ' ' +
-                    this.getCustomer?.getLastName, 
-            'idCustomer' : this.getCustomer?.getId,
-            'numberAccount': this.identificador,
-            'saldo': this.totalMoney
-        }
-        return datos;
+    checkAccountData(): Map <string , string | number>{
+        let accountData = new Map();
+        accountData.set('customer', this.getCustomer?.getName + ' ' + this.getCustomer?.getLastName);
+        accountData.set('idCustomer' , this.getCustomer?.getId);
+        accountData.set('numberAccount', this.identificador);
+        accountData.set('saldo', this.totalMoney);
+        return accountData;
     }
 
     enterMoney(money: number): number{

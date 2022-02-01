@@ -18,7 +18,7 @@ let listaPruebaQ : Array<string | number>[];
 let listaPruebaB : Array<string | number>[];
 let listaPruebaBFP : Array<string | number>[];
 let listaPruebaBFP2 : Array<string | number>[];
-function dates(){
+function data(){
     var list = clientes;
     listaGeneral = [];
     listaPruebaQ = [];
@@ -34,8 +34,7 @@ function dates(){
             list[index].phone.toString(), 
             list[index].cellPhone.toString());
         banco.addCustomers(customerTemp);
-
-        const customerListPrueba =[
+        const customerListPrueba = [
             list[index].id.toString(), 
             list[index].name, 
             list[index].last_name, 
@@ -77,8 +76,10 @@ function ListNormal(list: Array<string | number>[]) {
     });
 }
 function CheckAccountData(cuentaCliente: Account){
-    let datosCuentaCliente = cuentaCliente.checkAccountData();
-    console.log(JSON.stringify(datosCuentaCliente))
+    cuentaCliente.checkAccountData()
+                 .forEach(function(element){
+                     console.log(element);
+                 });
 }
 function EnterMoney(cuentaCliente: Account, money: number) {
     console.log('- Enter Money');
@@ -90,7 +91,7 @@ function WithdrawMoney(cuentaCliente: Current_Count | Investment_Fund, money: nu
     console.log('- Withdraw Money: 30');
     var isWithdrawMoney = cuentaCliente.withdrawMoney(money);
     if (isWithdrawMoney)
-        console.log('Retirando ' + money + ' 30 Saldo Actual: ' + cuentaCliente.getTotalMoney);
+        console.log('Retirando ' + money + ' Saldo Actual: ' + cuentaCliente.getTotalMoney);
     else {
         console.log(money + ' Sobre-exede su saldo: ' + cuentaCliente.getTotalMoney);
     }
@@ -199,7 +200,7 @@ function InformSortAndSearchWithFP() {
 }
 
 function main(){
-    dates();
+    data();
     const clienteGeneral = new Customer (
         clientes[0].id.toString(), 
         clientes[0].name, 
@@ -223,7 +224,7 @@ function main(){
     banco.addAccounts(cuentaIF);
     banco.addAccounts(cuentaHA);
     //Menu
-    var option = 16;
+    var option = 12;
     switch (option) {
         case 1: ListAccounts(banco.getAccounts)
             break;
