@@ -7,7 +7,7 @@ import { QuickSort } from "./QuickSort";
 import { BubbleSort } from "./BubbleSort";
 import { BinarySearch } from "./BinarySearch";
 import { LinearSearch } from "./LinearSearch";
-import * as clientes from './json_examples/Customer.json';
+import * as clientes from '../json_examples/Customer.json';
 import { Account } from "./Account";
 import { BubbleSortWhithFP } from "./BubbleSortWithFP";
 import { LinearSearchFP } from "./LinearSearchWithFP";
