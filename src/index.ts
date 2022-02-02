@@ -7,7 +7,7 @@ import { QuickSort } from "./QuickSort";
 import { BubbleSort } from "./BubbleSort";
 import { BinarySearch } from "./BinarySearch";
 import { LinearSearch } from "./LinearSearch";
-import * as clientes from '../json_examples/Customer.json';
+import * as clientes from './json_examples/Customer.json';
 import { Account } from "./Account";
 import { BubbleSortWhithFP } from "./BubbleSortWithFP";
 import { LinearSearchFP } from "./LinearSearchWithFP";
@@ -75,25 +75,23 @@ function ListNormal(list: Array<string | number>[]) {
         console.log(element[0] + ' ' + element[1] + ' ' + element[2]);
     });
 }
-function CheckAccountData(cuentaCliente: Account){
-    cuentaCliente.checkAccountData()
-                 .forEach(function(element){
-                     console.log(element);
-                 });
+function CheckAccountData(numberAccount: string){
+    var account = banco.findAccount(numberAccount);
+    console.log(account?.checkAccountData());
 }
 function EnterMoney(cuentaCliente: Account, money: number) {
     console.log('- Enter Money');
     cuentaCliente.enterMoney(money);
-    console.log('Depositando ' + money + ' Saldo Actual: ' + cuentaCliente.getTotalMoney);
+    console.log('Depositando ' + money + ' Saldo Actual: ' + cuentaCliente.getBalance);
     console.log('Puntos: '+cuentaCliente.getPointAccounts)
 }
 function WithdrawMoney(cuentaCliente: Current_Count | Investment_Fund, money: number) {
     console.log('- Withdraw Money: 30');
     var isWithdrawMoney = cuentaCliente.withdrawMoney(money);
     if (isWithdrawMoney)
-        console.log('Retirando ' + money + ' Saldo Actual: ' + cuentaCliente.getTotalMoney);
+        console.log('Retirando ' + money + ' Saldo Actual: ' + cuentaCliente.getBalance);
     else {
-        console.log(money + ' Sobre-exede su saldo: ' + cuentaCliente.getTotalMoney);
+        console.log(money + ' Sobre-exede su saldo: ' + cuentaCliente.getBalance);
     }
 }
 function CheckBalance(cuentaCliente: Account) {
@@ -101,16 +99,13 @@ function CheckBalance(cuentaCliente: Account) {
     cuentaCliente.checkBalance();
     console.log('Balance: ' + cuentaCliente.getBalance);
 }
-function ChangeClient(prevClient: Customer, nextClient: Customer, cuentaCliente: Account) {
-    cuentaCliente.changeClient(nextClient);
-    console.log(cuentaCliente.setCustomer);
+function ChangeClient(idCustomer: string, numberAccount: string, cuentaCliente: Account) {
+    console.log('De: ' + cuentaCliente.getCustomer.getId);
+    banco.changeClient(idCustomer, numberAccount);
+    console.log('A: ' + cuentaCliente.getCustomer.getId);
 }
 function MonthlyReport(cuentaCliente: Account) {
-    console.log('- Monthly Report');
-    const ReporteMensual = cuentaCliente.reports();
-    ReporteMensual.forEach(element => {
-        console.log(element + ' ');
-    });
+    console.log(cuentaCliente.reports());
 }
 function EditComision(cuentaCliente4: Account, newCommision: number) {
     console.log('- Modificar comision:')
@@ -224,13 +219,13 @@ function main(){
     banco.addAccounts(cuentaIF);
     banco.addAccounts(cuentaHA);
     //Menu
-    var option = 12;
+    var option = 8;
     switch (option) {
         case 1: ListAccounts(banco.getAccounts)
             break;
         case 2: ListCustomers(banco.getCustomers)
             break;
-        case 3: CheckAccountData(cuentaCC);
+        case 3: CheckAccountData(cuentaCC.getIdentificador);
             break;
         case 4: EnterMoney(cuentaCC, 55);
             break;
@@ -238,7 +233,7 @@ function main(){
             break;
         case 6: CheckBalance(cuentaCC);
             break;
-        case 7: ChangeClient(clienteGeneral, clienteCambio, cuentaCC);
+        case 7: ChangeClient(clienteCambio.getId, cuentaCC.getIdentificador, cuentaCC);
             break;
         case 8: MonthlyReport(cuentaHA);
             break;

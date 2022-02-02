@@ -1,6 +1,6 @@
 export interface IReport {
     datosGenerales: Object;
-    datosOperaciones: any;
-    operaciones: Object;
+    numberAccount: string,
+    datosOperaciones: Map <string, number>;
     ShowReport(): Object;
 }
