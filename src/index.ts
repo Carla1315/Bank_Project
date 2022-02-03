@@ -147,7 +147,7 @@ function InformSortAndSearch() {
     const bubbleSort = new BubbleSort(listaPruebaB);
     const quickSort = new QuickSort(listaPruebaQ);
     const lista = listaPruebaQ;
-
+  
     console.time('QuickSort')
     quickSort.sortByID();
     console.timeEnd('QuickSort')

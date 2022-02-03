@@ -19,11 +19,13 @@ export class Bank {
 
     public addCustomers(customer: Customer){
         this.customers.push(customer);
+
     }
     
     public get getCustomers(): Array <Customer>{
         return this.customers;
     }
+
 
     public findCustomer (idCustomer: string): Customer  | undefined{
         return this.customers.find(customer => customer.getId === idCustomer)
