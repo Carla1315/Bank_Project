@@ -1,7 +1,6 @@
 import { Account } from "./Account";
 import { Customer } from "./Customer";
 import { IWithdrawMoney } from "./IWithdrawMoney";
-import { MonthlyReportGral } from "./MonthlyReport";
 export class Current_Count extends Account implements IWithdrawMoney{
     private interes:number;
     limitWithdrawMoney: number;

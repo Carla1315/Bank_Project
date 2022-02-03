@@ -1,7 +1,6 @@
-import { Account } from "./Account";
 import { Customer } from "./Customer";
 import { IReport } from "./IReport";
-export class MonthlyReportGral implements IReport{
+export class MonthlyReport implements IReport{
     constructor( 
         readonly datosGenerales: Customer,
         readonly numberAccount: string,
@@ -16,6 +15,7 @@ export class MonthlyReportGral implements IReport{
         var balance = this.datosOperaciones.get('balance');
         var interes =  this.datosOperaciones.get('interes');
         var comission = this.datosOperaciones.get('comission')
+        console.log(comission)
         balance != undefined && interes != undefined && comission != undefined ?
                     final_balance = balance + balance * interes / 100 - comission :
                     final_balance = 'Wrong'

@@ -1,7 +1,6 @@
 import { Account } from "./Account";
 import { Customer } from "./Customer";
 import { IWithdrawMoney } from "./IWithdrawMoney";
-import { MonthlyReportGral } from "./MonthlyReport";
 export class Investment_Fund extends Account implements IWithdrawMoney{
     interes;
     limitWithdrawMoney: number;

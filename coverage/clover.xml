@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1643847666278" clover="3.2.0">
-  <project timestamp="1643847666279" name="All files">
-    <metrics statements="74" coveredstatements="23" conditionals="18" coveredconditionals="0" methods="36" coveredmethods="4" elements="128" coveredelements="27" complexity="0" loc="74" ncloc="74" packages="1" files="4" classes="4"/>
+<coverage generated="1643853393202" clover="3.2.0">
+  <project timestamp="1643853393202" name="All files">
+    <metrics statements="75" coveredstatements="35" conditionals="18" coveredconditionals="4" methods="36" coveredmethods="6" elements="129" coveredelements="45" complexity="0" loc="75" ncloc="75" packages="1" files="4" classes="4"/>
     <file name="Account.ts" path="C:\Users\LIBRERIA\Documents\assuresoft training\Modulo I\Proyectos\Bank_Project\src\Account.ts">
       <metrics statements="32" coveredstatements="11" conditionals="12" coveredconditionals="0" methods="17" coveredmethods="2"/>
       <line num="2" count="1" type="stmt"/>
@@ -40,25 +40,25 @@
     <file name="Current_Count.ts" path="C:\Users\LIBRERIA\Documents\assuresoft training\Modulo I\Proyectos\Bank_Project\src\Current_Count.ts">
       <metrics statements="10" coveredstatements="4" conditionals="1" coveredconditionals="0" methods="3" coveredmethods="1"/>
       <line num="1" count="1" type="stmt"/>
-      <line num="5" count="1" type="stmt"/>
-      <line num="11" count="1" type="stmt"/>
-      <line num="13" count="1" type="stmt"/>
-      <line num="17" count="0" type="stmt"/>
-      <line num="21" count="0" type="stmt"/>
-      <line num="23" count="0" type="cond" truecount="0" falsecount="1"/>
+      <line num="4" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="12" count="1" type="stmt"/>
+      <line num="16" count="0" type="stmt"/>
+      <line num="20" count="0" type="stmt"/>
+      <line num="22" count="0" type="cond" truecount="0" falsecount="1"/>
+      <line num="23" count="0" type="stmt"/>
       <line num="24" count="0" type="stmt"/>
-      <line num="25" count="0" type="stmt"/>
-      <line num="27" count="0" type="stmt"/>
+      <line num="26" count="0" type="stmt"/>
     </file>
     <file name="Customer.ts" path="C:\Users\LIBRERIA\Documents\assuresoft training\Modulo I\Proyectos\Bank_Project\src\Customer.ts">
       <metrics statements="19" coveredstatements="7" conditionals="0" coveredconditionals="0" methods="13" coveredmethods="1"/>
-      <line num="1" count="1" type="stmt"/>
-      <line num="17" count="1" type="stmt"/>
-      <line num="18" count="1" type="stmt"/>
-      <line num="19" count="1" type="stmt"/>
-      <line num="20" count="1" type="stmt"/>
-      <line num="21" count="1" type="stmt"/>
-      <line num="22" count="1" type="stmt"/>
+      <line num="1" count="2" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="18" count="2" type="stmt"/>
+      <line num="19" count="2" type="stmt"/>
+      <line num="20" count="2" type="stmt"/>
+      <line num="21" count="2" type="stmt"/>
+      <line num="22" count="2" type="stmt"/>
       <line num="26" count="0" type="stmt"/>
       <line num="30" count="0" type="stmt"/>
       <line num="34" count="0" type="stmt"/>
@@ -73,19 +73,20 @@
       <line num="70" count="0" type="stmt"/>
     </file>
     <file name="MonthlyReport.ts" path="C:\Users\LIBRERIA\Documents\assuresoft training\Modulo I\Proyectos\Bank_Project\src\MonthlyReport.ts">
-      <metrics statements="13" coveredstatements="1" conditionals="5" coveredconditionals="0" methods="3" coveredmethods="0"/>
-      <line num="4" count="1" type="stmt"/>
-      <line num="6" count="0" type="stmt"/>
-      <line num="7" count="0" type="stmt"/>
-      <line num="8" count="0" type="stmt"/>
-      <line num="10" count="0" type="stmt"/>
-      <line num="11" count="0" type="stmt"/>
-      <line num="12" count="0" type="stmt"/>
-      <line num="16" count="0" type="stmt"/>
-      <line num="17" count="0" type="stmt"/>
-      <line num="18" count="0" type="stmt"/>
-      <line num="19" count="0" type="cond" truecount="0" falsecount="5"/>
-      <line num="22" count="0" type="stmt"/>
+      <metrics statements="14" coveredstatements="13" conditionals="5" coveredconditionals="4" methods="3" coveredmethods="2"/>
+      <line num="3" count="2" type="stmt"/>
+      <line num="5" count="2" type="stmt"/>
+      <line num="6" count="2" type="stmt"/>
+      <line num="7" count="2" type="stmt"/>
+      <line num="9" count="2" type="stmt"/>
+      <line num="10" count="2" type="stmt"/>
+      <line num="11" count="2" type="stmt"/>
+      <line num="15" count="2" type="stmt"/>
+      <line num="16" count="2" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="18" count="2" type="stmt"/>
+      <line num="19" count="2" type="cond" truecount="4" falsecount="1"/>
+      <line num="22" count="2" type="stmt"/>
       <line num="25" count="0" type="stmt"/>
     </file>
   </project>

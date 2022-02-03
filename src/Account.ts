@@ -1,5 +1,5 @@
 import { Customer } from "./Customer";
-import { MonthlyReportGral } from "./MonthlyReport";
+import { MonthlyReport } from "./MonthlyReport";
 export abstract class Account { 
     private identificador: string;
     private commission: number;
@@ -93,7 +93,7 @@ export abstract class Account {
         operationData.set('balance', this.getBalance)
         operationData.set('interes', this.getInteres,)
         operationData.set('comission', this.getCommission)
-        const monthlyReport = new MonthlyReportGral(this.customer, this.identificador, operationData)
+        const monthlyReport = new MonthlyReport(this.customer, this.identificador, operationData)
         return monthlyReport.ShowReport();
     }
 }

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.69% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/13</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">80% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/5</span>
+                <span class='fraction'>4/5</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/3</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">7.69% </span>
+                <span class="strong">92.85% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/13</span>
+                <span class='fraction'>13/14</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -96,57 +96,57 @@
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Account } from "./Account";
-import { Customer } from "./Customer";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { Customer } from "./Customer";
 import { IReport } from "./IReport";
-export class MonthlyReportGral implements IReport{
-<span class="fstat-no" title="function not covered" >    constructor( </span>
-        readonly <span class="cstat-no" title="statement not covered" >datosGenerales: Customer,</span>
-        readonly <span class="cstat-no" title="statement not covered" >numberAccount: string,</span>
-        readonly <span class="cstat-no" title="statement not covered" >datosOperaciones: Map &lt;string, number&gt;</span>
+export class MonthlyReport implements IReport{
+    constructor( 
+        readonly datosGenerales: Customer,
+        readonly numberAccount: string,
+        readonly datosOperaciones: Map &lt;string, number&gt;
     ){
-<span class="cstat-no" title="statement not covered" >        this.datosGenerales = datosGenerales</span>
-<span class="cstat-no" title="statement not covered" >        this.numberAccount = numberAccount</span>
-<span class="cstat-no" title="statement not covered" >        this.datosOperaciones = datosOperaciones</span>
+        this.datosGenerales = datosGenerales
+        this.numberAccount = numberAccount
+        this.datosOperaciones = datosOperaciones
     }
-<span class="fstat-no" title="function not covered" >    showFinalBalance(</span>): String {
+    showFinalBalance(): String {
         var final_balance;
-        var balance = <span class="cstat-no" title="statement not covered" >this.datosOperaciones.get('balance');</span>
-        var interes =  <span class="cstat-no" title="statement not covered" >this.datosOperaciones.get('interes');</span>
-        var comission = <span class="cstat-no" title="statement not covered" >this.datosOperaciones.get('comission')</span>
-<span class="cstat-no" title="statement not covered" >        balance != undefined &amp;&amp; interes != undefined &amp;&amp; comission != undefined ?</span>
+        var balance = this.datosOperaciones.get('balance');
+        var interes =  this.datosOperaciones.get('interes');
+        var comission = this.datosOperaciones.get('comission')
+        console.log(comission)
+        balance != undefined &amp;&amp; interes != undefined &amp;&amp; comission != undefined ?
                     final_balance = balance + balance * interes / 100 - comission :
-                    final_balance = 'Wrong'
-<span class="cstat-no" title="statement not covered" >        return final_balance.toString()</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >                    final_balance = 'Wrong'</span>
+        return final_balance.toString()
     }
 <span class="fstat-no" title="function not covered" >    ShowReport(</span>): String {
 <span class="cstat-no" title="statement not covered" >        return `</span>
@@ -163,7 +163,7 @@ export class MonthlyReportGral implements IReport{
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed Feb 02 2022 20:21:06 GMT-0400 (hora de Bolivia)
+                at Wed Feb 02 2022 21:56:33 GMT-0400 (hora de Bolivia)
             </div>
         <script src="prettify.js"></script>
         <script>
