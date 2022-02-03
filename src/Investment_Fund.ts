@@ -19,11 +19,12 @@ export class Investment_Fund extends Account implements IWithdrawMoney{
     withdrawMoney(amount: number): boolean{
         const newTotalMoney = this.getTotalMoney - amount;
 
-        if(newTotalMoney >= this.limitWithdrawMoney){
+        if(newTotalMoney >= this.limitWithdrawMoney && this.setBlock == false){
             this.setTotalMoney = newTotalMoney;
             return true;
         }
         this.setBlock = true;
+        console.log('Cuenta bloqueada')
         return false;
     }
     
