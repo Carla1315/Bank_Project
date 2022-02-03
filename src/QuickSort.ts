@@ -41,7 +41,8 @@ export class QuickSort implements ISort{
         }
     }
     sortByID(): void {
-        this.quickSort(this.unsortedArray, 0, this.unsortedArray.length - 1, 0)
+        if (this.unsortedArray != [])
+            this.quickSort(this.unsortedArray, 0, this.unsortedArray.length - 1, 0)
     }
     sortByNombre(): void {
         this.quickSort(this.unsortedArray, 0, this.unsortedArray.length - 1, 1)

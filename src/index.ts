@@ -219,7 +219,7 @@ function main(){
     banco.addAccounts(cuentaIF);
     banco.addAccounts(cuentaHA);
     //Menu
-    var option = 8;
+    var option = 12;
     switch (option) {
         case 1: ListAccounts(banco.getAccounts)
             break;
@@ -256,5 +256,18 @@ function main(){
         default:
             break;
     }
+    
+    console.log(JSON.stringify(listaGeneral))
+    /*var result = listaGeneral.sort(function(a, b) {
+            if (a[1] > b[1]) {
+            return 1;
+            }
+            if (a[1] < b[1]) {
+            return -1;
+            }
+            return 0;
+        }
+    )
+    console.log(JSON.stringify(result))*/
 }
 main();
