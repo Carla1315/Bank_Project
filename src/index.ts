@@ -219,7 +219,7 @@ function main(){
     banco.addAccounts(cuentaIF);
     banco.addAccounts(cuentaHA);
     //Menu
-    var option = 13;
+    var option = 16;
     switch (option) {
         case 1: ListAccounts(banco.getAccounts)
             break;
