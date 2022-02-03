@@ -1,23 +1,29 @@
+
 import { ISort } from "./ISort";
 
-export class BubbleSort implements ISort{
+export class BubbleSortWhithFP implements ISort{
     constructor(
         readonly unsortedArray: (string | number)[][]
     ){
         this.unsortedArray = unsortedArray;
     }
 
-    bubbleSort(unsortedArray: (string | number)[][], PositionElementSort: number){
+    bubbleSort(
+        unsortedArray: (string | number)[][], 
+        PositionElementSort: number
+    ){
         let lengthunsortedArray = unsortedArray.length;
         let checked;
         do {
             checked = false;
-            for (let puntero = 0; puntero < lengthunsortedArray-1; puntero++) {
-                if (unsortedArray[puntero][PositionElementSort] > unsortedArray[puntero + 1][PositionElementSort]) {
-                    unsortedArray[puntero] = unsortedArray.splice(puntero + 1, 1, unsortedArray[puntero])[0]
+            unsortedArray.forEach(function (element, index, array){
+                if (index + 1 < lengthunsortedArray &&
+                    element[PositionElementSort] > array[index + 1][PositionElementSort]) 
+                {
+                    unsortedArray[index] = unsortedArray.splice(index + 1, 1, unsortedArray[index])[0]
                     checked = true;
                 }
-            }
+            });
         } while (checked);
     }
     sortByID(): void {

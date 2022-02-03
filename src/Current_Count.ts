@@ -7,7 +7,7 @@ export class Current_Count extends Account implements IWithdrawMoney{
     limitWithdrawMoney: number;
  
     constructor(id: string,
-        totalMoney: number, customer: Customer|null){
+        totalMoney: number, customer: Customer){
         super (id, totalMoney, customer),
         this.interes = 0.11;
         this.limitWithdrawMoney = 0;
@@ -18,28 +18,12 @@ export class Current_Count extends Account implements IWithdrawMoney{
     }
 
     withdrawMoney (amount: number): boolean{
-        const newTotalMoney = this.getTotalMoney - amount;
+        const newTotalMoney = this.getBalance - amount;
 
         if(newTotalMoney >= this.limitWithdrawMoney){
-            this.setTotalMoney = newTotalMoney;
+            this.setBalance = newTotalMoney;
             return true;
         }
         return false;
-    }
-
-    reports(): any {
-        let importantDates = {
-            'name': this.getCustomer?.getName + ' ' + this.getCustomer?.getLastName,
-            'numberIdentification': this.getCustomer?.getId,
-            'numberAccount': this.getIdentificador,
-        }
-        let dates = {
-            'balance': this.getBalance,
-            'totalMoney': this.getTotalMoney,
-            'interes': this.getInteres,
-            'comission': this.getCommission
-        }
-        const monthlyReport = new MonthlyReportGral(importantDates,dates)
-        return monthlyReport.ShowReport();
     }
 }

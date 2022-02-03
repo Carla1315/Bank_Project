@@ -9,16 +9,22 @@ import { BinarySearch } from "./BinarySearch";
 import { LinearSearch } from "./LinearSearch";
 import * as clientes from './json_examples/Customer.json';
 import { Account } from "./Account";
+import { BubbleSortWhithFP } from "./BubbleSortWithFP";
+import { LinearSearchFP } from "./LinearSearchWithFP";
 
 const banco = new Bank();
 let listaGeneral : Array<string | number>[];
 let listaPruebaQ : Array<string | number>[];
-let listaPruebaM : Array<string | number>[];
-function dates(){
+let listaPruebaB : Array<string | number>[];
+let listaPruebaBFP : Array<string | number>[];
+let listaPruebaBFP2 : Array<string | number>[];
+function data(){
     var list = clientes;
     listaGeneral = [];
     listaPruebaQ = [];
-    listaPruebaM = [];
+    listaPruebaB = [];
+    listaPruebaBFP = [];
+    listaPruebaBFP2 = [];
     for (let index = 0; index < 100; index++) {
         const customerTemp = new Customer(
             list[index].id.toString(), 
@@ -28,8 +34,7 @@ function dates(){
             list[index].phone.toString(), 
             list[index].cellPhone.toString());
         banco.addCustomers(customerTemp);
-
-        const customerListPrueba =[
+        const customerListPrueba = [
             list[index].id.toString(), 
             list[index].name, 
             list[index].last_name, 
@@ -39,7 +44,9 @@ function dates(){
         ];
         listaGeneral.push(customerListPrueba);
         listaPruebaQ.push(customerListPrueba);
-        listaPruebaM.push(customerListPrueba);
+        listaPruebaB.push(customerListPrueba);
+        listaPruebaBFP.push(customerListPrueba);
+        listaPruebaBFP2.push(customerListPrueba);
     }
 }
 function ListAccounts(list: Array<Account>){
@@ -68,23 +75,23 @@ function ListNormal(list: Array<string | number>[]) {
         console.log(element[0] + ' ' + element[1] + ' ' + element[2]);
     });
 }
-function CheckAccountData(cuentaCliente: Account){
-    let datosCuentaCliente = cuentaCliente.checkAccountData();
-    console.log(JSON.stringify(datosCuentaCliente))
+function CheckAccountData(numberAccount: string){
+    var account = banco.findAccount(numberAccount);
+    console.log(account?.checkAccountData());
 }
 function EnterMoney(cuentaCliente: Account, money: number) {
     console.log('- Enter Money');
     cuentaCliente.enterMoney(money);
-    console.log('Depositando ' + money + ' Saldo Actual: ' + cuentaCliente.getTotalMoney);
+    console.log('Depositando ' + money + ' Saldo Actual: ' + cuentaCliente.getBalance);
     console.log('Puntos: '+cuentaCliente.getPointAccounts)
 }
 function WithdrawMoney(cuentaCliente: Current_Count | Investment_Fund, money: number) {
     console.log('- Withdraw Money: 30');
     var isWithdrawMoney = cuentaCliente.withdrawMoney(money);
     if (isWithdrawMoney)
-        console.log('Retirando ' + money + ' 30 Saldo Actual: ' + cuentaCliente.getTotalMoney);
+        console.log('Retirando ' + money + ' Saldo Actual: ' + cuentaCliente.getBalance);
     else {
-        console.log(money + ' Sobre-exede su saldo: ' + cuentaCliente.getTotalMoney);
+        console.log(money + ' Sobre-exede su saldo: ' + cuentaCliente.getBalance);
     }
 }
 function CheckBalance(cuentaCliente: Account) {
@@ -92,16 +99,13 @@ function CheckBalance(cuentaCliente: Account) {
     cuentaCliente.checkBalance();
     console.log('Balance: ' + cuentaCliente.getBalance);
 }
-function ChangeClient(prevClient: Customer, nextClient: Customer, cuentaCliente: Account) {
-    cuentaCliente.changeClient(nextClient);
-    console.log(cuentaCliente.setCustomer);
+function ChangeClient(idCustomer: string, numberAccount: string, cuentaCliente: Account) {
+    console.log('De: ' + cuentaCliente.getCustomer.getId);
+    banco.changeClient(idCustomer, numberAccount);
+    console.log('A: ' + cuentaCliente.getCustomer.getId);
 }
 function MonthlyReport(cuentaCliente: Account) {
-    console.log('- Monthly Report');
-    const ReporteMensual = cuentaCliente.reports();
-    ReporteMensual.forEach(element => {
-        console.log(element + ' ');
-    });
+    console.log(cuentaCliente.reports());
 }
 function EditComision(cuentaCliente4: Account, newCommision: number) {
     console.log('- Modificar comision:')
@@ -140,10 +144,10 @@ function SearchName(lista: Array<string | number>[], element: string | number) {
 }
 function InformSortAndSearch() {
     console.log('- Tiempo de Ordenado por: ')
-    const bubbleSort=new BubbleSort(listaPruebaM);
-    const quickSort=new QuickSort(listaPruebaQ);
+    const bubbleSort = new BubbleSort(listaPruebaB);
+    const quickSort = new QuickSort(listaPruebaQ);
     const lista = listaPruebaQ;
-
+  
     console.time('QuickSort')
     quickSort.sortByID();
     console.timeEnd('QuickSort')
@@ -164,8 +168,34 @@ function InformSortAndSearch() {
     console.timeEnd('LinearSearch')
 }
 
+function InformSortAndSearchWithFP() {
+    console.log('- Tiempo de Ordenado por: ')
+    const bubbleSortWhithFP = new BubbleSortWhithFP(listaPruebaBFP);
+    const bubbleSort = new BubbleSort(listaPruebaBFP2);
+    const lista = listaPruebaQ;
+
+    console.time('BubbleSortWhithFP')
+    bubbleSortWhithFP.sortByID();
+    console.timeEnd('BubbleSortWhithFP')
+    
+    console.time('BubbleSort')
+    bubbleSort.sortByID();
+    console.timeEnd('BubbleSort')
+
+    const linearSearchFP = new LinearSearchFP(lista);
+    const linearSearch = new LinearSearch(lista);
+    console.log('- Tiempo de Busqueda por: ')
+    console.time('LinearSearch')
+    linearSearch.searchByID('9957548');
+    console.timeEnd('LinearSearch')
+    
+    console.time('LinearSearchFP')
+    linearSearchFP.searchByID('9957548');
+    console.timeEnd('LinearSearchFP')
+}
+
 function main(){
-    dates();
+    data();
     const clienteGeneral = new Customer (
         clientes[0].id.toString(), 
         clientes[0].name, 
@@ -189,13 +219,13 @@ function main(){
     banco.addAccounts(cuentaIF);
     banco.addAccounts(cuentaHA);
     //Menu
-    var option = 15;
+    var option = 16;
     switch (option) {
         case 1: ListAccounts(banco.getAccounts)
             break;
         case 2: ListCustomers(banco.getCustomers)
             break;
-        case 3: CheckAccountData(cuentaCC);
+        case 3: CheckAccountData(cuentaCC.getIdentificador);
             break;
         case 4: EnterMoney(cuentaCC, 55);
             break;
@@ -203,7 +233,7 @@ function main(){
             break;
         case 6: CheckBalance(cuentaCC);
             break;
-        case 7: ChangeClient(clienteGeneral, clienteCambio, cuentaCC);
+        case 7: ChangeClient(clienteCambio.getId, cuentaCC.getIdentificador, cuentaCC);
             break;
         case 8: MonthlyReport(cuentaHA);
             break;
@@ -220,6 +250,8 @@ function main(){
         case 14: SearchName(listaGeneral,'Roma');
             break;
         case 15: InformSortAndSearch();
+            break;
+        case 16: InformSortAndSearchWithFP();
             break;
         default:
             break;
