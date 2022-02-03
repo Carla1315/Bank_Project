@@ -1,18 +1,17 @@
 import { Customer } from "./Customer";
+import { MonthlyReportGral } from "./MonthlyReport";
 export abstract class Account { 
     private identificador: string;
     private commission: number;
-    private totalMoney: number;
     private balance: number;
     private pointAccounts: number;
-    private customer: Customer|null;
+    private customer: Customer;
     private block: boolean;
 
-    constructor(id: string, totalMoney: number, customer: Customer|null){
+    constructor(id: string, balance: number, customer: Customer){
         this.identificador = id;
         this.commission = 1.1;
-        this.totalMoney = totalMoney;
-        this.balance = this.totalMoney;
+        this.balance = balance;
         this.pointAccounts = 0;
         this.customer = customer;
         this.block = false;
@@ -36,17 +35,12 @@ export abstract class Account {
     public get getCommission(): number {
         return this.commission;
     }
+    
+    public set setBalance(balance: number) {
+        this.balance = balance;
+    }
 
-    public set setTotalMoney(totalMoney: number) {
-        this.totalMoney = totalMoney;
-    }
-    
-    public get getTotalMoney() : number {
-        return  this.totalMoney;
-    }
-    
     public get getBalance(): number {
-        this.balance = this.totalMoney;
         return this.balance;
     }
 
@@ -62,7 +56,7 @@ export abstract class Account {
         this.customer = customer;
     }
     
-    public get getCustomer(): Customer|null {
+    public get getCustomer(): Customer {
         return this.customer;
     }
 
@@ -74,31 +68,32 @@ export abstract class Account {
         return this.block;
     }
 
-    checkAccountData(): Object{
-        let datos = new Object();
-        datos = {
-            'customer': this.getCustomer?.getName + ' ' +
-                    this.getCustomer?.getLastName, 
-            'idCustomer' : this.getCustomer?.getId,
-            'numberAccount': this.identificador,
-            'saldo': this.totalMoney
-        }
-        return datos;
-    }
-
     enterMoney(money: number): number{
-        this.totalMoney += money;
+        this.balance += money;
         this.pointAccounts += Math.floor(money / 10);
-        return this.totalMoney;
+        return this.balance;
     }
 
     checkBalance(): number{
         return this.balance;
     }
 
-    changeClient(customer: Customer){
-        this.customer=customer;
+    checkAccountData(): string{
+        var accountData = `
+            Customer: ${this.getCustomer?.getName} ${this.getCustomer?.getLastName}
+            Identification:  ${this.getCustomer?.getId}
+            Number Account: ${this.identificador}
+            Saldo: ${this.balance}`;
+        
+        return accountData;
     }
     
-    abstract reports(): (any)[];
+    reports(): String {
+        var operationData = new Map()
+        operationData.set('balance', this.getBalance)
+        operationData.set('interes', this.getInteres,)
+        operationData.set('comission', this.getCommission)
+        const monthlyReport = new MonthlyReportGral(this.customer, this.identificador, operationData)
+        return monthlyReport.ShowReport();
+    }
 }

@@ -1,21 +1,31 @@
+import { Account } from "./Account";
+import { Customer } from "./Customer";
 import { IReport } from "./IReport";
 export class MonthlyReportGral implements IReport{
-    operaciones:Object;
-
     constructor( 
-        readonly datosGenerales: Object,
-        readonly datosOperaciones: any
+        readonly datosGenerales: Customer,
+        readonly numberAccount: string,
+        readonly datosOperaciones: Map <string, number>
     ){
-        this.operaciones= [];
+        this.datosGenerales = datosGenerales
+        this.numberAccount = numberAccount
+        this.datosOperaciones = datosOperaciones
     }
-    ShowReport(): Object {
+    showFinalBalance(): String {
         var final_balance;
-        var commision = this.datosOperaciones.commision != undefined ? this.datosOperaciones.commision : 0;
-        final_balance = this.datosOperaciones.balance + 
-                        (this.datosOperaciones.totalMoney * this.datosOperaciones.interes / 100) - commision;
-        this.operaciones= {'final_balance': final_balance}
-        return  [{'Important Dates':this.datosGenerales,
-                'Review': this.datosOperaciones,
-                'Operaciones': this.operaciones}];
+        var balance = this.datosOperaciones.get('balance');
+        var interes =  this.datosOperaciones.get('interes');
+        var comission = this.datosOperaciones.get('comission')
+        balance != undefined && interes != undefined && comission != undefined ?
+                    final_balance = balance + balance * interes / 100 - comission :
+                    final_balance = 'Wrong'
+        return final_balance.toString()
+    }
+    ShowReport(): String {
+        return `
+            Customer:        ${this.datosGenerales.getName} ${this.datosGenerales.getLastName}
+            Identification:  ${this.datosGenerales.getId}
+            Number Account:  ${this.numberAccount}
+            Final Balance:   ${this.showFinalBalance()}`;
     }
 }
