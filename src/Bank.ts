@@ -21,11 +21,24 @@ export class Bank {
         this.customers.push(customer);
     }
     
-    public set setCustomers(customers: Array <Customer>) {
-        this.customers = customers;
-    }
-    
     public get getCustomers(): Array <Customer>{
         return this.customers;
+    }
+
+    public findCustomer (idCustomer: string): Customer  | undefined{
+        return this.customers.find(customer => customer.getId === idCustomer)
+    }
+
+    public findAccount (numberAccount: string): Account | undefined{
+        return this.accounts.find(account => account.getIdentificador === numberAccount)
+    }
+    
+    changeClient(idCustomer: string, numberAccount: string){
+        var accountFound = this.accounts.find(account => account.getIdentificador === numberAccount)
+        var customerFound = this.customers.find(customer => customer.getId === idCustomer)
+        if (accountFound != undefined && customerFound != undefined){
+            accountFound.setCustomer = customerFound
+        }
+        return accountFound;
     }
 }
