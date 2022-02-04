@@ -1,16 +1,16 @@
-import { Bank } from "./Bank";
-import { Customer } from "./Customer";
-import { Current_Count } from "./Current_Count";
-import { Housing_Account } from "./Housing_Account";
-import { Investment_Fund } from "./Investment_Fund";
-import { QuickSort } from "./QuickSort";
-import { BubbleSort } from "./BubbleSort";
-import { BinarySearch } from "./BinarySearch";
-import { LinearSearch } from "./LinearSearch";
+import Bank from "./Bank";
+import Customer from "./Customer";
+import Current_Count from "./Current_Count";
+import Housing_Account from "./Housing_Account";
+import Investment_Fund from "./Investment_Fund";
+import QuickSort from "./QuickSort";
+import BubbleSort from "./BubbleSort";
+import BinarySearch from "./BinarySearch";
+import LinearSearch from "./LinearSearch";
 import * as clientes from './json_examples/Customer.json';
-import { Account } from "./Account";
-import { BubbleSortWhithFP } from "./BubbleSortWithFP";
-import { LinearSearchFP } from "./LinearSearchWithFP";
+import Account from "./Account";
+import BubbleSortWhithFP from "./BubbleSortWithFP";
+import LinearSearchFP from "./LinearSearchWithFP";
 
 const banco = new Bank();
 let listaGeneral : Array<string | number>[];
@@ -147,7 +147,7 @@ function InformSortAndSearch() {
     const bubbleSort = new BubbleSort(listaPruebaB);
     const quickSort = new QuickSort(listaPruebaQ);
     const lista = listaPruebaQ;
-  
+
     console.time('QuickSort')
     quickSort.sortByID();
     console.timeEnd('QuickSort')
@@ -219,7 +219,7 @@ function main(){
     banco.addAccounts(cuentaIF);
     banco.addAccounts(cuentaHA);
     //Menu
-    var option = 16;
+    var option = 8;
     switch (option) {
         case 1: ListAccounts(banco.getAccounts)
             break;

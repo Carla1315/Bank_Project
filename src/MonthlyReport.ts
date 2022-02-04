@@ -1,7 +1,6 @@
-import { Account } from "./Account";
-import { Customer } from "./Customer";
-import { IReport } from "./IReport";
-export class MonthlyReportGral implements IReport{
+import Customer from "./Customer";
+import IReport from "./IReport";
+export default class MonthlyReport implements IReport{
     constructor( 
         readonly datosGenerales: Customer,
         readonly numberAccount: string,

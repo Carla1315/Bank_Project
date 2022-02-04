@@ -1,6 +1,6 @@
-import { Customer } from "./Customer";
-import { MonthlyReportGral } from "./MonthlyReport";
-export abstract class Account { 
+import Customer from "./Customer";
+import MonthlyReport from "./MonthlyReport";
+export default abstract class Account { 
     private identificador: string;
     private commission: number;
     private balance: number;
@@ -44,7 +44,7 @@ export abstract class Account {
         return this.balance;
     }
 
-    public set setPointAccounts(pointAccounts: number) {
+    private set setPointAccounts(pointAccounts: number) {
         this.pointAccounts = pointAccounts;
     }
     
@@ -70,8 +70,12 @@ export abstract class Account {
 
     enterMoney(money: number): number{
         this.balance += money;
-        this.pointAccounts += Math.floor(money / 10);
+        this.addPointAccounts(money);
         return this.balance;
+    }
+
+    addPointAccounts(money: number){
+        this.pointAccounts += Math.floor(money / 10);
     }
 
     checkBalance(): number{
@@ -79,21 +83,22 @@ export abstract class Account {
     }
 
     checkAccountData(): string{
-        var accountData = `
-            Customer: ${this.getCustomer?.getName} ${this.getCustomer?.getLastName}
-            Identification:  ${this.getCustomer?.getId}
-            Number Account: ${this.identificador}
-            Saldo: ${this.balance}`;
+        var accountData = '';
+        if(this.customer != undefined)
+            accountData = `
+                Customer: ${this.getCustomer.getName} ${this.getCustomer.getLastName}
+                Identification:  ${this.getCustomer.getId}
+                Number Account: ${this.identificador}
+                Saldo: ${this.balance}`;
         
         return accountData;
     }
-  
     reports(): String {
         var operationData = new Map()
         operationData.set('balance', this.getBalance)
         operationData.set('interes', this.getInteres,)
         operationData.set('comission', this.getCommission)
-        const monthlyReport = new MonthlyReportGral(this.customer, this.identificador, operationData)
+        const monthlyReport = new MonthlyReport(this.customer, this.identificador, operationData)
         return monthlyReport.ShowReport();
     }
 }

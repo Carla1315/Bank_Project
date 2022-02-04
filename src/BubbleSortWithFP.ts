@@ -1,7 +1,6 @@
+import ISort from "./ISort";
 
-import { ISort } from "./ISort";
-
-export class BubbleSortWhithFP implements ISort{
+export default class BubbleSortWhithFP implements ISort{
     constructor(
         readonly unsortedArray: (string | number)[][]
     ){

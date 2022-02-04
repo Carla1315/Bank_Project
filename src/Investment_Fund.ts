@@ -1,13 +1,11 @@
-import { Account } from "./Account";
-import { Customer } from "./Customer";
-import { IWithdrawMoney } from "./IWithdrawMoney";
-import { MonthlyReportGral } from "./MonthlyReport";
-export class Investment_Fund extends Account implements IWithdrawMoney{
+import Account from "./Account";
+import Customer from "./Customer";
+import IWithdrawMoney from "./IWithdrawMoney";
+export default class Investment_Fund extends Account implements IWithdrawMoney{
     interes;
     limitWithdrawMoney: number;
-
-    constructor(id: string, totalMoney: number, customer: Customer){
-        super (id, totalMoney, customer),
+    constructor(id: string, balance: number, customer: Customer){
+        super (id, balance, customer),
         this.interes = 0.33;
         this.limitWithdrawMoney = -600;
     } 
@@ -18,13 +16,14 @@ export class Investment_Fund extends Account implements IWithdrawMoney{
 
     withdrawMoney(amount: number): boolean{
         const newTotalMoney = this.getBalance - amount;
-
-        if(newTotalMoney >= this.limitWithdrawMoney && this.setBlock == false){
+        if(newTotalMoney >= this.limitWithdrawMoney  && this.setBlock != true){
             this.setBalance = newTotalMoney;
             return true;
         }
-        this.setBlock = true;
-        console.log('Cuenta bloqueada')
-        return false;
+        else{
+            this.setBlock = true;
+            console.log('Cuenta bloqueada')
+            return false;
+        }
     }
 }
