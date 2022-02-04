@@ -1,6 +1,6 @@
-import Bank from "./Bank";
-import Current_Count from "./Current_Count" ;
-import Customer from "./Customer"
+import Bank from "../Bank";
+import Current_Count from "../Current_Count" ;
+import Customer from "../Customer"
 describe('Result Add Customer and Account', () => {
     const banco = new Bank();
     const customerHelp = new Customer('1236456','saly','fuertes','Av Satelite', '452685','455655');

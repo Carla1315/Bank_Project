@@ -1,6 +1,6 @@
-import Current_Count from "./Current_Count";
-import Customer from "./Customer"
-import MonthlyReport from "./MonthlyReport";
+import Current_Count from "../Current_Count";
+import Customer from "../Customer"
+import MonthlyReport from "../MonthlyReport";
 
 
 describe('Report Final Balance', () => {

@@ -1,8 +1,8 @@
-import Current_Count from "./Current_Count" ;
-import Customer from "./Customer"
-import MonthlyReport from "./MonthlyReport";
+import Current_Count from "../Current_Count" ;
+import Customer from "../Customer"
+import MonthlyReport from "../MonthlyReport";
 
-jest.mock('./MonthlyReport');
+jest.mock('../MonthlyReport');
 const monthlyReport = MonthlyReport as jest.MockedClass<typeof MonthlyReport>;
 
 beforeEach(() => {

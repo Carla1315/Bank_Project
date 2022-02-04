@@ -1,6 +1,6 @@
-import Customer from "./Customer"
-import Housing_Account from "./Housing_Account";
-import MonthlyReport from "./MonthlyReport";
+import Customer from "../Customer"
+import Housing_Account from "../Housing_Account";
+import MonthlyReport from "../MonthlyReport";
 
 describe('Interes', () => {
     const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');

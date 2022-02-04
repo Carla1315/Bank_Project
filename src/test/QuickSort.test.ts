@@ -1,4 +1,4 @@
-import QuickSort from "./QuickSort"
+import QuickSort from "../QuickSort"
 describe('Get and Set Nombre', () => {
     let list = [['1236456', 'Ana'], ['9456213', 'Tomas'], 
                 ['5646541', 'Rita'], ['5654545', 'Andrea'], 

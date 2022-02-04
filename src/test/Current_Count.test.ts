@@ -1,5 +1,5 @@
-import Current_Count from "./Current_Count";
-import Customer from "./Customer"
+import Current_Count from "../Current_Count";
+import Customer from "../Customer"
 describe('Interes', () => {
     const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');
     const accountHelp = new Current_Count(Math.random().toString(), 0, customerHelp);

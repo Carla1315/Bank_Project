@@ -1,5 +1,5 @@
-import Customer from "./Customer"
-import Investment_Fund from "./Investment_Fund";
+import Customer from "../Customer"
+import Investment_Fund from "../Investment_Fund";
 
 describe('Interes', () => {
     const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');

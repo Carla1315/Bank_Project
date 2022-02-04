@@ -1,4 +1,4 @@
-import LinearSearch from "./LinearSearch";
+import LinearSearch from "../LinearSearch";
 
 describe('Search LinearSearch', () => {
     let list = ['1236456', '4162368', '5646541', '5654545', '6546545', '6587848', '8978448']
