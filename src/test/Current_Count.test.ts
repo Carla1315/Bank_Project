@@ -11,7 +11,7 @@ describe('Interes', () => {
 });
 
 describe('withdraw Money', () => {
-    const customerHelp = new Customer('1236456','saly','fuertes','Av Satelite', '452685','455655');
+    const customerHelp = new Customer('1236456', 'saly', 'fuertes','Av Satelite', '452685', '455655');
     const accountHelp = new Current_Count('71236456-1565145', 1235, customerHelp);
 
     test('If withdraw Money is right: moneyToOut < MoneyInAccount', () => {

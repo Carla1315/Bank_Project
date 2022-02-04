@@ -1,6 +1,6 @@
 import Customer from "../Customer"
 describe('Get and Set Nombre', () => {
-    const customerHelp = new Customer('1236456','saly','fuertes','Av Satelite', '452685','455655');
+    const customerHelp = new Customer('1236456' ,'saly', 'fuertes', 'Av Satelite', '452685', '455655');
     test('is GetId', () => {
       expect(customerHelp.getId).toBe('1236456');
     });

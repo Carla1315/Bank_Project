@@ -4,10 +4,7 @@ describe('QuickSort by ID and Nanme', () => {
                 ['5646541', 'Rita'], ['5654545', 'Andrea'], 
                 ['6546545', 'Vivian'], ['1235546', 'Tiana'], 
                 ['8978448', 'Laura']]
-    let listResult = [['1236456', 'Ana'], ['9456213', 'Tomas'], 
-                        ['5646541', 'Rita'], ['5654545', 'Andrea'], 
-                        ['6546545', 'Vivian'], ['1235546', 'Tiana'], 
-                        ['8978448', 'Laura']]
+    let listResult = [...list]
 
     const quickSort = new QuickSort(list);
     test('Sort ID', () => {
@@ -28,7 +25,7 @@ describe('QuickSort by ID and Nanme', () => {
                 return 0;
             }
         );
-        
+
         expect(list).toStrictEqual(listResult);
     });
 });

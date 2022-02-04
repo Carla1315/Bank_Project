@@ -13,7 +13,7 @@ describe('Interes', () => {
 });
 
 describe('Report Final Balance whithout Comission', () => {
-    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685','455655');
+    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');
     const accountHelp = new Housing_Account ('0004', 20, customerHelp);
     var operationData = new Map()
     operationData.set('balance', accountHelp.getBalance)

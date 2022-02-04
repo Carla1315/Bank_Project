@@ -3,7 +3,7 @@ import Current_Count from "../Current_Count" ;
 import Customer from "../Customer"
 describe('Result Add Customer and Account', () => {
     const banco = new Bank();
-    const customerHelp = new Customer('1236456','saly','fuertes','Av Satelite', '452685','455655');
+    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');
     test(' Matriz Customer', () => {
         banco.addCustomers(customerHelp);
         expect(banco.getCustomers).toEqual(
@@ -31,7 +31,7 @@ describe('Result Add Customer and Account', () => {
 
 describe('Find Account', () => {
     const banco = new Bank();
-    const customerHelp = new Customer('1236456','saly','fuertes','Av Satelite', '452685','455655');
+    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');
     const accountHelp = new Current_Count('71236456-1565145', 0, customerHelp);
     banco.addAccounts(accountHelp);
 
@@ -46,7 +46,7 @@ describe('Find Account', () => {
 
 describe('Find Customer', () => {
     const banco = new Bank();
-    const customerHelp = new Customer('1236456','saly','fuertes','Av Satelite', '452685','455655');
+    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');
     const accountHelp = new Current_Count('71236456-1565145', 0, customerHelp);
     banco.addCustomers(customerHelp);
 
@@ -61,26 +61,26 @@ describe('Find Customer', () => {
 
 describe('Change Client', () => {
     const banco = new Bank();
-    const customerHelp = new Customer('1236456','saly','fuertes','Av Satelite', '452685','455655');
+    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');
     const accountHelp = new Current_Count('71236456-1565145', 0, customerHelp);
-    const customerHelpOutList = new Customer('7896456','Taly','fuertes','Av Satelite', '452685','455655');
+    const customerHelpOutList = new Customer('7896456', 'Taly', 'fuertes', 'Av Satelite', '452685', '455655');
     const accountHelpTwo = new Current_Count('5646456-1565145', 0, customerHelpOutList);
     banco.addAccounts(accountHelp);
     banco.addCustomers(customerHelp);
     banco.addAccounts(accountHelpTwo);
     test('Client and Account found in listBank', () => {
-      expect(banco.changeClient('1236456','71236456-1565145')).toBeTruthy();
+      expect(banco.changeClient('1236456', '71236456-1565145')).toBeTruthy();
     });
   
     test('Client not found in listBank', () => {
-      expect(banco.changeClient('65465316','71236456-1565145')).toBeFalsy();
+      expect(banco.changeClient('65465316', '71236456-1565145')).toBeFalsy();
     });
 
     test('Account not found in listBank', () => {
-        expect(banco.changeClient('1236456','546456-1565145')).toBeFalsy();
+        expect(banco.changeClient('1236456', '546456-1565145')).toBeFalsy();
     });
 
     test('Account with client but not in listBank', () => {
-        expect(banco.changeClient('7896456','5646456-1565145')).toBeFalsy();
+        expect(banco.changeClient('7896456', '5646456-1565145')).toBeFalsy();
     });
 });

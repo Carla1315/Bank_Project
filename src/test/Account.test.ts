@@ -10,7 +10,7 @@ beforeEach(() => {
 });
 
 describe('Enter Money', () => {
-    const customerHelp = new Customer('1236456','saly','fuertes','Av Satelite', '452685','455655');
+    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');
     const accountHelp = new Current_Count(Math.random().toString(),0,customerHelp);
     const moneyInAccount = Math.random();
     const moneytoEnter = Math.random();
@@ -35,7 +35,7 @@ describe('Point Accounts', () => {
 });
 
 describe('Checket Account', () => {
-    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685','455655');
+    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');
     const accountHelp = new Current_Count(Math.random().toString(), 0, customerHelp);
     test('Checket Account return String', ()=>{
         expect(accountHelp.checkAccountData()).toEqual(expect.anything())
@@ -43,7 +43,7 @@ describe('Checket Account', () => {
 });
 
 describe('Reports', () => {
-    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685','455655');
+    const customerHelp = new Customer('1236456', 'saly', 'fuertes', 'Av Satelite', '452685', '455655');
     const accountHelp = new Current_Count(Math.random().toString(), 0, customerHelp);
     test('Checket account call Report', ()=>{    
         accountHelp.reports();
