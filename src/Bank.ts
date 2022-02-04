@@ -24,7 +24,7 @@ export default class Bank {
     public get getCustomers(): Array <Customer>{
         return this.customers;
     }
-
+  
     public findCustomer (idCustomer: string): Customer  | undefined{
         return this.customers.find(customer => customer.getId === idCustomer)
     }

@@ -11,5 +11,4 @@ export default class Housing_Account extends Account{
     get getInteres(): number{
         return this.interes;
     }
-    
 }

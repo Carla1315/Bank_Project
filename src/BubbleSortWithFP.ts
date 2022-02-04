@@ -1,4 +1,3 @@
-
 import ISort from "./ISort";
 
 export default class BubbleSortWhithFP implements ISort{

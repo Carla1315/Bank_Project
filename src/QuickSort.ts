@@ -26,7 +26,6 @@ export default class QuickSort implements ISort{
         this.swap(unsortedArray, punteroi + 1, rightIndex);
         return (punteroi + 1);
     }
-
     quickSort(
         unsortedArray: Array<number|string>[], 
         leftIndex: number, 

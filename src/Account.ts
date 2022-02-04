@@ -93,7 +93,6 @@ export default abstract class Account {
         
         return accountData;
     }
-    
     reports(): String {
         var operationData = new Map()
         operationData.set('balance', this.getBalance)

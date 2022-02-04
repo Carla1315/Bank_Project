@@ -45,7 +45,6 @@ export default class BinarySearch implements ISearch {
                 elementSearch,
                 positionElementSearch);
         }
-     
         return [];
     }
     searchByID(elementSearch: number|string): Array<number|string>[] {
