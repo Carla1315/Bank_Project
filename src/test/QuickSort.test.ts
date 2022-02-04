@@ -1,5 +1,5 @@
 import QuickSort from "../QuickSort"
-describe('Get and Set Nombre', () => {
+describe('QuickSort by ID and Nanme', () => {
     let list = [['1236456', 'Ana'], ['9456213', 'Tomas'], 
                 ['5646541', 'Rita'], ['5654545', 'Andrea'], 
                 ['6546545', 'Vivian'], ['1235546', 'Tiana'], 
@@ -8,12 +8,14 @@ describe('Get and Set Nombre', () => {
                         ['5646541', 'Rita'], ['5654545', 'Andrea'], 
                         ['6546545', 'Vivian'], ['1235546', 'Tiana'], 
                         ['8978448', 'Laura']]
+
     const quickSort = new QuickSort(list);
     test('Sort ID', () => {
         quickSort.sortByID();
         listResult.sort();
         expect(list).toStrictEqual(listResult);
     });
+
     test('Sort Name', () => {
         quickSort.sortByNombre();
         listResult.sort(function(a, b) {
@@ -26,6 +28,7 @@ describe('Get and Set Nombre', () => {
                 return 0;
             }
         );
+        
         expect(list).toStrictEqual(listResult);
     });
 });
