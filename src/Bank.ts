@@ -1,6 +1,6 @@
-import { Account } from "./Account";
-import { Customer } from "./Customer";
-export class Bank { 
+import Account from "./Account";
+import Customer from "./Customer";
+export default class Bank { 
     private accounts: Array<Account>;
     private customers: Array <Customer>;
 
@@ -38,7 +38,8 @@ export class Bank {
         var customerFound = this.customers.find(customer => customer.getId === idCustomer)
         if (accountFound != undefined && customerFound != undefined){
             accountFound.setCustomer = customerFound
+            return true
         }
-        return accountFound;
+        return false;
     }
 }

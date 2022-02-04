@@ -1,16 +1,16 @@
-import { Bank } from "./Bank";
-import { Customer } from "./Customer";
-import { Current_Count } from "./Current_Count";
-import { Housing_Account } from "./Housing_Account";
-import { Investment_Fund } from "./Investment_Fund";
-import { QuickSort } from "./QuickSort";
-import { BubbleSort } from "./BubbleSort";
-import { BinarySearch } from "./BinarySearch";
-import { LinearSearch } from "./LinearSearch";
+import Bank from "./Bank";
+import Customer from "./Customer";
+import Current_Count from "./Current_Count";
+import Housing_Account from "./Housing_Account";
+import Investment_Fund from "./Investment_Fund";
+import QuickSort from "./QuickSort";
+import BubbleSort from "./BubbleSort";
+import BinarySearch from "./BinarySearch";
+import LinearSearch from "./LinearSearch";
 import * as clientes from './json_examples/Customer.json';
-import { Account } from "./Account";
-import { BubbleSortWhithFP } from "./BubbleSortWithFP";
-import { LinearSearchFP } from "./LinearSearchWithFP";
+import Account from "./Account";
+import BubbleSortWhithFP from "./BubbleSortWithFP";
+import LinearSearchFP from "./LinearSearchWithFP";
 
 const banco = new Bank();
 let listaGeneral : Array<string | number>[];
@@ -219,7 +219,7 @@ function main(){
     banco.addAccounts(cuentaIF);
     banco.addAccounts(cuentaHA);
     //Menu
-    var option = 12;
+    var option = 8;
     switch (option) {
         case 1: ListAccounts(banco.getAccounts)
             break;
@@ -256,18 +256,5 @@ function main(){
         default:
             break;
     }
-    
-    console.log(JSON.stringify(listaGeneral))
-    /*var result = listaGeneral.sort(function(a, b) {
-            if (a[1] > b[1]) {
-            return 1;
-            }
-            if (a[1] < b[1]) {
-            return -1;
-            }
-            return 0;
-        }
-    )
-    console.log(JSON.stringify(result))*/
 }
 main();

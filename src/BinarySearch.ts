@@ -1,6 +1,6 @@
-import { ISearch } from "./ISearch";
+import ISearch from "./ISearch";
 
-export class BinarySearch implements ISearch {
+export default class BinarySearch implements ISearch {
     constructor(
         readonly arraySearch: (string | number)[][]
     ){

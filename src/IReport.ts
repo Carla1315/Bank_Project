@@ -1,4 +1,4 @@
-export interface IReport {
+export default interface IReport {
     datosGenerales: Object;
     numberAccount: string,
     datosOperaciones: Map <string, number>;

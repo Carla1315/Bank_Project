@@ -1,13 +1,13 @@
-import { Account } from "./Account";
-import { Customer } from "./Customer";
-import { IWithdrawMoney } from "./IWithdrawMoney";
-export class Current_Count extends Account implements IWithdrawMoney{
+import Account from "./Account";
+import Customer from "./Customer";
+import IWithdrawMoney from "./IWithdrawMoney";
+export default class Current_Count extends Account implements IWithdrawMoney{
     private interes:number;
     limitWithdrawMoney: number;
  
     constructor(id: string,
-        totalMoney: number, customer: Customer){
-        super (id, totalMoney, customer),
+        balance: number, customer: Customer){
+        super (id, balance, customer),
         this.interes = 0.11;
         this.limitWithdrawMoney = 0;
     }

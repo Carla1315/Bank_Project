@@ -1,6 +1,6 @@
-import { ISort } from "./ISort";
+import ISort from "./ISort";
 
-export class QuickSort implements ISort{
+export default class QuickSort implements ISort{
     constructor(
         readonly unsortedArray: (string | number)[][]
     ){
@@ -45,6 +45,7 @@ export class QuickSort implements ISort{
             this.quickSort(this.unsortedArray, 0, this.unsortedArray.length - 1, 0)
     }
     sortByNombre(): void {
+        if (this.unsortedArray != [])
         this.quickSort(this.unsortedArray, 0, this.unsortedArray.length - 1, 1)
     }
 }

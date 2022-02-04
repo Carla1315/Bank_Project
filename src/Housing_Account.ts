@@ -1,10 +1,9 @@
-import { deflateSync } from "zlib";
-import { Account } from "./Account";
-import { Customer } from "./Customer";
-export class Housing_Account extends Account{
+import Account from "./Account";
+import Customer from "./Customer";
+export default class Housing_Account extends Account{
     interes;
-    constructor(id: string, totalMoney: number, customer: Customer){
-        super (id, totalMoney, customer),
+    constructor(id: string, balance: number, customer: Customer){
+        super (id, balance, customer),
         this.interes = 0.22;
         this.setCommission = 0;
     } 
